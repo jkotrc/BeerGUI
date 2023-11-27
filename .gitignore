@@ -1,0 +1,9 @@
+.DS_Store
+build/
+dist/
+.cache/
+.idea
+*.log
+tmp/
+
+
