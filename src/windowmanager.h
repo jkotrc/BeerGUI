@@ -2,6 +2,7 @@
 #define WINDOWMANAGER_H_
 
 #include "core.h"
+#include "renderer.h"
 
 class Window;
 
@@ -16,16 +17,22 @@ class Window;
  */
 class WindowManager {
     public:
-        WindowManager(unsigned int width, unsigned int height);
-        /// Call this in your setup() to prepare display code.
-        void setup();
-        /// Add a window by ID. Preferably use an enum for this
-        void add(int id, Window&& window);
+        WindowManager(Graphics& g, beer::uint width, beer::uint height);
+        /// Call this once per iteration of loop..
+        void update();
+        /// Add a window by ID. Preferably use an enum to name the different windows.
+        void add(beer::uint id, Window const& window);
         /// Change the currently displayed window to window with id.
-        bool makeActive(int id);
+        bool makeActive(beer::uint id);
+        /// Calling this propagates the event to children, changing state
+        void onEvent(InputEvent const& event);
 
+        Graphics& getGraphics() const;
     private:
-
+        beer::uint _active_window;
+        beer::uint _nwindows;
+        Window* _windows;
+        Graphics& _graphics;
 };
 
 #endif // WINDOWMANAGER_H_

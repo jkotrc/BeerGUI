@@ -3,6 +3,7 @@ set(DISPLAYLIB_SOURCES
   core.cpp
   window.cpp
   component.cpp
+  windowmanager.cpp
 )
 
 set(DISPLAYLIB_HEADERS

@@ -10,6 +10,13 @@ class Display;
 
 template <typename RenderBackend>
 class Display<Renderer<RenderBackend>> {
+    public:
+        using DisplayRenderer = Renderer<RenderBackend>;
+        Display(uint8_t width, uint8_t height, DisplayRenderer&& renderer);
+        ~Display();
+
+    private:
+        DisplayRenderer* _renderer;
 
 
 };

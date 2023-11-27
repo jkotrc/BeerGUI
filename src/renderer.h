@@ -3,19 +3,20 @@
 
 #include "core.h"
 
-// TODO Update to Point and Region
 class Graphics {
   public:
     /// set pixel color at given point
-    virtual void drawPixel(int16_t x, int16_t y, uint16_t color) = 0;
-    /// fill region with color
-    virtual void fill(Point const &tl, Point const &br) = 0;
-    // virtual void update() = 0;
-    // virtual void clear() = 0;
-    // virtual void setup() = 0;
+    virtual void drawPixel(Point const& point, Color const& color) = 0;
+    /// fill region with given color
+    virtual void fill(Region const& region, Color const& color) = 0;
+    /// draw colored line between points
+    virtual void drawLine(Point const& from, Point const& to, Color const& color) = 0;
+    /// must be called once per loop to update display
+    virtual void update() = 0;
+    //TODO
+    //void drawBitmap
+    //void drawText
 };
-
-
 
 /**
  * TODO: Renderer semantics "hardware render library" GLBackend -> GLRenderLib, Adafruit_GFX
@@ -46,17 +47,17 @@ class Graphics {
 template <typename RenderBackend>
 class Renderer : public Graphics {
   public:
-    Renderer();
-    void drawPixel(int16_t x, int16_t y, uint16_t color) override;
-    /*
-    ** TODO:
-    **  void drawText(TextSize const& size, const char* text)
-    **  void drawBitmap(...)
-     */
-    void fill(Point const &tl, Point const &br) override;
-    void update();
+    Renderer(RenderBackend* backend) {
+        _backend = backend;
+    }
+    Renderer() : Renderer(new RenderBackend()) {}
     void clear();
     void setup();
+
+    void update() override;
+    void drawPixel(Point const& point, Color const& color) override;
+    void fill(Region const& region, Color const& color) override;
+    void drawLine(Point const& from, Point const& to, Color const& color) override;
   private:
     RenderBackend* _backend;
 };

@@ -1,9 +1,13 @@
 #ifndef CORE_H_
 #define CORE_H_
 
-#include <utility>
+#ifndef BEER_ARDUINO
 #include <cstdint>
-#include <memory>
+#endif
+
+namespace beer {
+  using uint = unsigned int;
+}
 
 /**
  * TBA variable text sizes
@@ -25,15 +29,15 @@ enum class InputEvent {
 };
 
 struct Color {
-  uint8_t r;
-  uint8_t g;
-  uint8_t b;
+  beer::uint r;
+  beer::uint g;
+  beer::uint b;
 };
 
 /// Point on the screen with (0,0) at top left and +y down.
 struct Point {
-    uint8_t x;
-    uint8_t y;
+    beer::uint x;
+    beer::uint y;
 };
 
 /// "x" width and "y" height

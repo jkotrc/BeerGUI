@@ -5,7 +5,7 @@
  * @file BeerGUI.h
  * @brief Include file for arduino sketches
  */
-
+#define BEER_ARDUINO
 #include "core.h"
 #include "renderer.h"
 #include "component.h"
