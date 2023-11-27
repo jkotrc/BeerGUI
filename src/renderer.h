@@ -3,6 +3,9 @@
 
 #include "core.h"
 
+/**
+ * Base class for all drawing. Components use this to draw themselves
+ */
 class Graphics {
   public:
     /// set pixel color at given point

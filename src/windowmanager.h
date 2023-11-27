@@ -1,8 +1,7 @@
 #ifndef WINDOWMANAGER_H_
 #define WINDOWMANAGER_H_
 
-#include "core.h"
-#include "renderer.h"
+#include "component.h"
 
 class Window;
 

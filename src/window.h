@@ -20,10 +20,13 @@ class Window {
         beer::uint getWidth() const;
         beer::uint getHeight() const;
     private:
-        Component** _components; //TODO support multiple components
-        beer::uint _ncomponents;
-        Region _region;
-        WindowManager* _parent;
+      enum class CursorState {WINDOW,COMPONENT};
+      Component **_components; // TODO support multiple components
+      beer::uint _ncomponents = 0;
+      beer::uint _cursor_pos = 0;
+      CursorState _cursor_state = CursorState::WINDOW;
+      Region _region;
+      WindowManager *_parent;
 };
 
 
