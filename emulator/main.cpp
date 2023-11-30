@@ -2,7 +2,6 @@
 #include <memory>
 #include <stdio.h>
 #include <signal.h>
-#include <assert.h>
 
 #include "BeerGUI.h"
 #include "GLBackend.h"
@@ -22,30 +21,31 @@ int main(int argc, char *argv[]) {
     running = true;
     signal(SIGINT, finish);
 
+    //void setup()
     GLBackend backend(emulator::width, emulator::height);
     Renderer<GLBackend> ren(&backend);
-
     ren.setup();
 
     WindowManager manager(ren, emulator::width, emulator::height);
     Window window(emulator::width, emulator::height);
 
     SliderComponent slider({{10, 10}, {110, 20}}, 255/2);
+    SliderComponent slider2({{10, 30}, {110, 40}}, 255/2);
+    // ButtonComponent btn({{150, 30}, {150+30, 30+30}}, [](Component* cmp){
+    //     printf("Hello from button!\n");
+    // });
 
-    assert(window.addComponent(&slider));
+    window.addComponent(&slider);
+    window.addComponent(&slider2);
     manager.add(0, window);
-    slider.draw(ren);
-    // ren.fill({{10,10}, {110, 20}}, {255, 255, 255});
 
     while (running) {
+        //void loop()
         manager.update();
         std::vector<InputEvent> events = backend.clearEvents();
         for (InputEvent const& event : events) {
             manager.onEvent(event);
         }
-
-        // g.drawPixel(1, 1, 0xffff);
-        // ren.update();
     }
 
     return 0;

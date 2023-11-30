@@ -6,24 +6,34 @@
 
 class Window;
 
+constexpr Color active_color = Color{0xaa, 0xaa, 0xff};
+
 /**
  * Base class for components. Each new component should derive from this
  * and provide code for drawing and handling user input.
  *
- * Focus is managed by parent window, so `handleEvent` is not called if
- * the cursor is not at the component.
+ * Cursor is managed by parent window. If the component is selected,
+ * `activate()` is called, enabling events until `_active` becomes false again
  */
 class Component {
     public:
         virtual ~Component();
-        virtual void handleEvent(InputEvent const& event_type) = 0;
+        /**
+         * Specific components provide their own ways of handling events.
+         * Make there is a way to exit the component!
+         */
+        virtual void handleEvent(InputEvent const &event_type) = 0;
+        /// Customizable draw method
         virtual void draw(Graphics& graphics) = 0;
         void setVisible(bool visible);
+        /// Set hover state. Ensure `draw` makes component look different when selected with cursor
         void setHover(bool hover);
+        /// Called when component selected. Gives control over inputs
         void activate();
-        void setCursorAt(bool cursor_on_component);
 
+        /// Whether the component is hidden
         bool isVisible() const;
+        /// Whether the component is in control of inputs
         bool isActive() const;
         beer::uint getWidth() const;
         beer::uint getHeight() const;
@@ -35,35 +45,5 @@ class Component {
         bool _active = false;
         Window* _parent = nullptr;
 };
-
-//TODO move to components/slidercomponent.h for clearer separation
-class SliderComponent : public Component {
-    public:
-        SliderComponent(Region const& region, uint8_t initial_progress);
-        void handleEvent(InputEvent const& event_type) override;
-        void draw(Graphics& graphics) override;
-    protected:
-        uint8_t _progress;
-        bool _cursorable = true;
-};
-
-
-class ButtonComponent : public Component {
-    public:
-        using ButtonFunc = void (*)(Component*);
-        ButtonComponent(Region const& region, ButtonFunc action);
-        void handleEvent(InputEvent const& event_type) override;
-        void draw(Graphics& graphics) override;
-    private:
-        ButtonFunc _action;
-        uint8_t _progress;
-};
-
-
-namespace internal {
-
-}
-
-
 
 #endif // COMPONENT_H_

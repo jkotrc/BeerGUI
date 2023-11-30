@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "Color", "struct_color.html", null ],
     [ "Component", "class_component.html", [
+      [ "ButtonComponent", "class_button_component.html", null ],
       [ "SliderComponent", "class_slider_component.html", null ]
     ] ],
     [ "Display< Renderer >", "class_display.html", null ],
@@ -12,6 +13,7 @@ var hierarchy =
     ] ],
     [ "Point", "struct_point.html", null ],
     [ "Region", "struct_region.html", null ],
+    [ "Screen", "struct_screen.html", null ],
     [ "View", "class_view.html", null ],
     [ "Window", "class_window.html", null ],
     [ "WindowManager", "class_window_manager.html", null ]

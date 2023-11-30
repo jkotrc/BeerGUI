@@ -8,7 +8,9 @@
 #define BEER_ARDUINO
 #include "core.h"
 #include "renderer.h"
-#include "component.h"
 #include "window.h"
+#include "component.h"
+
+#include "components/slider.h"
 
 #endif // BEERGUI_H_

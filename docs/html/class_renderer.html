@@ -103,24 +103,36 @@ Inheritance diagram for Renderer&lt; RenderBackend &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab08fcafd95d3039d942ac9c9238846ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ab08fcafd95d3039d942ac9c9238846ba">drawPixel</a> (int16_t x, int16_t y, uint16_t color) override</td></tr>
-<tr class="memdesc:ab08fcafd95d3039d942ac9c9238846ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_renderer.html#ab08fcafd95d3039d942ac9c9238846ba">More...</a><br /></td></tr>
-<tr class="separator:ab08fcafd95d3039d942ac9c9238846ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2fa10627e140208b346f86207170407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ab2fa10627e140208b346f86207170407">fill</a> (<a class="el" href="struct_point.html">Point</a> const &amp;tl, <a class="el" href="struct_point.html">Point</a> const &amp;br) override</td></tr>
-<tr class="memdesc:ab2fa10627e140208b346f86207170407"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with color  <a href="class_renderer.html#ab2fa10627e140208b346f86207170407">More...</a><br /></td></tr>
-<tr class="separator:ab2fa10627e140208b346f86207170407"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed9701950d0a9cecbef1fc86a3f34a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a3ed9701950d0a9cecbef1fc86a3f34a5">update</a> ()</td></tr>
-<tr class="separator:a3ed9701950d0a9cecbef1fc86a3f34a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a568ad7f88dcf93092d24f682b893b1dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a568ad7f88dcf93092d24f682b893b1dc">Renderer</a> (RenderBackend *backend)</td></tr>
+<tr class="separator:a568ad7f88dcf93092d24f682b893b1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad61a32238cb3c880631c331fb990b60f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ad61a32238cb3c880631c331fb990b60f">clear</a> ()</td></tr>
 <tr class="separator:ad61a32238cb3c880631c331fb990b60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad46a571390081c336980a94dfbeec8a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ad46a571390081c336980a94dfbeec8a7">setup</a> ()</td></tr>
 <tr class="separator:ad46a571390081c336980a94dfbeec8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a388da029dc5d3f7d6052e9a96f0112c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a388da029dc5d3f7d6052e9a96f0112c3">drawPixel</a> (int16_t x, int16_t y, uint16_t color)=0</td></tr>
-<tr class="memdesc:a388da029dc5d3f7d6052e9a96f0112c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_graphics.html#a388da029dc5d3f7d6052e9a96f0112c3">More...</a><br /></td></tr>
-<tr class="separator:a388da029dc5d3f7d6052e9a96f0112c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa509a1764aababd107b8daa00307fa4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#aaa509a1764aababd107b8daa00307fa4">fill</a> (<a class="el" href="struct_point.html">Point</a> const &amp;tl, <a class="el" href="struct_point.html">Point</a> const &amp;br)=0</td></tr>
-<tr class="memdesc:aaa509a1764aababd107b8daa00307fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with color  <a href="class_graphics.html#aaa509a1764aababd107b8daa00307fa4">More...</a><br /></td></tr>
-<tr class="separator:aaa509a1764aababd107b8daa00307fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad726e800cc588af5f046eabc1909397f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ad726e800cc588af5f046eabc1909397f">update</a> () override</td></tr>
+<tr class="memdesc:ad726e800cc588af5f046eabc1909397f"><td class="mdescLeft">&#160;</td><td class="mdescRight">must be called once per loop to update display  <a href="class_renderer.html#ad726e800cc588af5f046eabc1909397f">More...</a><br /></td></tr>
+<tr class="separator:ad726e800cc588af5f046eabc1909397f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c2f67756421926967103983168d4b52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a6c2f67756421926967103983168d4b52">drawPixel</a> (<a class="el" href="struct_point.html">Point</a> const &amp;point, <a class="el" href="struct_color.html">Color</a> const &amp;color) override</td></tr>
+<tr class="memdesc:a6c2f67756421926967103983168d4b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_renderer.html#a6c2f67756421926967103983168d4b52">More...</a><br /></td></tr>
+<tr class="separator:a6c2f67756421926967103983168d4b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2215e2ddaec9b7e038289e4205782f72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a2215e2ddaec9b7e038289e4205782f72">fill</a> (<a class="el" href="struct_region.html">Region</a> const &amp;region, <a class="el" href="struct_color.html">Color</a> const &amp;color) override</td></tr>
+<tr class="memdesc:a2215e2ddaec9b7e038289e4205782f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with given color  <a href="class_renderer.html#a2215e2ddaec9b7e038289e4205782f72">More...</a><br /></td></tr>
+<tr class="separator:a2215e2ddaec9b7e038289e4205782f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e33abe41cdd73abd479d5f65948abfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a8e33abe41cdd73abd479d5f65948abfd">drawLine</a> (<a class="el" href="struct_point.html">Point</a> const &amp;from, <a class="el" href="struct_point.html">Point</a> const &amp;to, <a class="el" href="struct_color.html">Color</a> const &amp;color) override</td></tr>
+<tr class="memdesc:a8e33abe41cdd73abd479d5f65948abfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw colored line between points  <a href="class_renderer.html#a8e33abe41cdd73abd479d5f65948abfd">More...</a><br /></td></tr>
+<tr class="separator:a8e33abe41cdd73abd479d5f65948abfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dbd141364d8504b58520d079866a749"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a7dbd141364d8504b58520d079866a749">drawPixel</a> (<a class="el" href="struct_point.html">Point</a> const &amp;point, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a7dbd141364d8504b58520d079866a749"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_graphics.html#a7dbd141364d8504b58520d079866a749">More...</a><br /></td></tr>
+<tr class="separator:a7dbd141364d8504b58520d079866a749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6504b04f3e48b69ed380b239947811ba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a6504b04f3e48b69ed380b239947811ba">fill</a> (<a class="el" href="struct_region.html">Region</a> const &amp;region, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a6504b04f3e48b69ed380b239947811ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with given color  <a href="class_graphics.html#a6504b04f3e48b69ed380b239947811ba">More...</a><br /></td></tr>
+<tr class="separator:a6504b04f3e48b69ed380b239947811ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4df19184d11529170b4df8366af0efec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a4df19184d11529170b4df8366af0efec">drawLine</a> (<a class="el" href="struct_point.html">Point</a> const &amp;from, <a class="el" href="struct_point.html">Point</a> const &amp;to, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a4df19184d11529170b4df8366af0efec"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw colored line between points  <a href="class_graphics.html#a4df19184d11529170b4df8366af0efec">More...</a><br /></td></tr>
+<tr class="separator:a4df19184d11529170b4df8366af0efec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a50c2519443e09f9ff7f7bce47f2d1fce">update</a> ()=0</td></tr>
+<tr class="memdesc:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">must be called once per loop to update display  <a href="class_graphics.html#a50c2519443e09f9ff7f7bce47f2d1fce">More...</a><br /></td></tr>
+<tr class="separator:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename RenderBackend&gt;<br />
@@ -137,21 +149,64 @@ How to customize</h2>
 <p >then define all the functions from the interface in the sources <code>myrenderlib.cpp</code>, for example</p>
 <p ><code>template &lt;&gt; void MyRenderer::setup() { ... }</code> </p>
 
-<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00047">47</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00051">51</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2e46305d78fd769a3202de4f05fdaf51" name="a2e46305d78fd769a3202de4f05fdaf51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e46305d78fd769a3202de4f05fdaf51">&#9670;&nbsp;</a></span>Renderer()</h2>
+<a id="a568ad7f88dcf93092d24f682b893b1dc" name="a568ad7f88dcf93092d24f682b893b1dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a568ad7f88dcf93092d24f682b893b1dc">&#9670;&nbsp;</a></span>Renderer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename RenderBackend &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GLRenderer::Renderer</td>
+          <td class="memname"><a class="el" href="class_renderer.html">Renderer</a>&lt; RenderBackend &gt;<a class="el" href="class_renderer.html">::Renderer</a> </td>
+          <td>(</td>
+          <td class="paramtype">RenderBackend *&#160;</td>
+          <td class="paramname"><em>backend</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00069">69</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00053">53</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
+
+</div>
+</div>
+<a id="aa519bdea73b670bc908f5ebcdc944dcd" name="aa519bdea73b670bc908f5ebcdc944dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa519bdea73b670bc908f5ebcdc944dcd">&#9670;&nbsp;</a></span>Renderer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename RenderBackend &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_renderer.html">Renderer</a>&lt; RenderBackend &gt;<a class="el" href="class_renderer.html">::Renderer</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00056">56</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
 
 </div>
 </div>
@@ -168,12 +223,60 @@ How to customize</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00105">105</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00247">247</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab08fcafd95d3039d942ac9c9238846ba" name="ab08fcafd95d3039d942ac9c9238846ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab08fcafd95d3039d942ac9c9238846ba">&#9670;&nbsp;</a></span>drawPixel()</h2>
+<a id="a8e33abe41cdd73abd479d5f65948abfd" name="a8e33abe41cdd73abd479d5f65948abfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e33abe41cdd73abd479d5f65948abfd">&#9670;&nbsp;</a></span>drawLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GLRenderer::drawLine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>draw colored line between points </p>
+
+<p>Implements <a class="el" href="class_graphics.html#a4df19184d11529170b4df8366af0efec">Graphics</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00240">240</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6c2f67756421926967103983168d4b52" name="a6c2f67756421926967103983168d4b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c2f67756421926967103983168d4b52">&#9670;&nbsp;</a></span>drawPixel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,19 +287,13 @@ How to customize</h2>
         <tr>
           <td class="memname">void GLRenderer::drawPixel </td>
           <td>(</td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
           <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
@@ -214,14 +311,14 @@ How to customize</h2>
 
 <p>set pixel color at given point </p>
 
-<p>Implements <a class="el" href="class_graphics.html#a388da029dc5d3f7d6052e9a96f0112c3">Graphics</a>.</p>
+<p>Implements <a class="el" href="class_graphics.html#a7dbd141364d8504b58520d079866a749">Graphics</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00089">89</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00224">224</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab2fa10627e140208b346f86207170407" name="ab2fa10627e140208b346f86207170407"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2fa10627e140208b346f86207170407">&#9670;&nbsp;</a></span>fill()</h2>
+<a id="a2215e2ddaec9b7e038289e4205782f72" name="a2215e2ddaec9b7e038289e4205782f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2215e2ddaec9b7e038289e4205782f72">&#9670;&nbsp;</a></span>fill()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,14 +329,14 @@ How to customize</h2>
         <tr>
           <td class="memname">void GLRenderer::fill </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>tl</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_region.html">Region</a> const &amp;&#160;</td>
+          <td class="paramname"><em>region</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>br</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -254,11 +351,11 @@ How to customize</h2>
 </table>
 </div><div class="memdoc">
 
-<p>fill region with color </p>
+<p>fill region with given color </p>
 
-<p>Implements <a class="el" href="class_graphics.html#aaa509a1764aababd107b8daa00307fa4">Graphics</a>.</p>
+<p>Implements <a class="el" href="class_graphics.html#a6504b04f3e48b69ed380b239947811ba">Graphics</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00094">94</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00230">230</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
 
 </div>
 </div>
@@ -274,23 +371,38 @@ How to customize</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00075">75</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00205">205</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a3ed9701950d0a9cecbef1fc86a3f34a5" name="a3ed9701950d0a9cecbef1fc86a3f34a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ed9701950d0a9cecbef1fc86a3f34a5">&#9670;&nbsp;</a></span>update()</h2>
+<a id="ad726e800cc588af5f046eabc1909397f" name="ad726e800cc588af5f046eabc1909397f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad726e800cc588af5f046eabc1909397f">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void GLRenderer::update</td>
+          <td class="memname">void GLRenderer::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00099">99</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
+<p>must be called once per loop to update display </p>
+
+<p>Implements <a class="el" href="class_graphics.html#a50c2519443e09f9ff7f7bce47f2d1fce">Graphics</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_g_l_backend_8cpp_source.html#l00243">243</a> of file <a class="el" href="_g_l_backend_8cpp_source.html">GLBackend.cpp</a>.</p>
 
 </div>
 </div>

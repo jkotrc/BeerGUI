@@ -92,18 +92,100 @@ $(document).ready(function(){initNavTree('class_window.html',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2cc4e1e5fc875b141b61978a79c42e8c"><td class="memItemLeft" align="right" valign="top"><a id="a2cc4e1e5fc875b141b61978a79c42e8c" name="a2cc4e1e5fc875b141b61978a79c42e8c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Window</b> (unsigned int width, unsigned int height)</td></tr>
-<tr class="separator:a2cc4e1e5fc875b141b61978a79c42e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d8c7f316ef9e8a4488d00c430957c16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a4d8c7f316ef9e8a4488d00c430957c16">init</a> ()</td></tr>
-<tr class="separator:a4d8c7f316ef9e8a4488d00c430957c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4adbbe0d0b20c2077bf2cba93dd2f831"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a4adbbe0d0b20c2077bf2cba93dd2f831">Window</a> (beer::uint width, beer::uint height)</td></tr>
+<tr class="separator:a4adbbe0d0b20c2077bf2cba93dd2f831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff4d02bc39e351e6fcdee0df9bfbac6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a5ff4d02bc39e351e6fcdee0df9bfbac6">addComponent</a> (<a class="el" href="class_component.html">Component</a> *component)</td></tr>
+<tr class="memdesc:a5ff4d02bc39e351e6fcdee0df9bfbac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add component to window, with anchor point relative to window's top left corner.  <a href="class_window.html#a5ff4d02bc39e351e6fcdee0df9bfbac6">More...</a><br /></td></tr>
+<tr class="separator:a5ff4d02bc39e351e6fcdee0df9bfbac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ec96f7b1e29635e7a7bff479697ecf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a2ec96f7b1e29635e7a7bff479697ecf9">draw</a> ()</td></tr>
+<tr class="memdesc:a2ec96f7b1e29635e7a7bff479697ecf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw all components in this window.  <a href="class_window.html#a2ec96f7b1e29635e7a7bff479697ecf9">More...</a><br /></td></tr>
 <tr class="separator:a2ec96f7b1e29635e7a7bff479697ecf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9105675366f2efc3e9305d9231d4b204"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a9105675366f2efc3e9305d9231d4b204">onEvent</a> (InputEvent const &amp;event)</td></tr>
+<tr class="memdesc:a9105675366f2efc3e9305d9231d4b204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calling this propagates the event to children, changing state.  <a href="class_window.html#a9105675366f2efc3e9305d9231d4b204">More...</a><br /></td></tr>
+<tr class="separator:a9105675366f2efc3e9305d9231d4b204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbed440b791d87688a7d8402cfa731f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#acbed440b791d87688a7d8402cfa731f0">setParent</a> (<a class="el" href="class_window_manager.html">WindowManager</a> *parent)</td></tr>
+<tr class="separator:acbed440b791d87688a7d8402cfa731f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad87519393c89733688e68233f1e9670b"><td class="memItemLeft" align="right" valign="top">beer::uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ad87519393c89733688e68233f1e9670b">getWidth</a> () const</td></tr>
+<tr class="separator:ad87519393c89733688e68233f1e9670b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f111f324335797153e33ba0473301c"><td class="memItemLeft" align="right" valign="top">beer::uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a99f111f324335797153e33ba0473301c">getHeight</a> () const</td></tr>
+<tr class="separator:a99f111f324335797153e33ba0473301c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00006">6</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00008">8</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4adbbe0d0b20c2077bf2cba93dd2f831" name="a4adbbe0d0b20c2077bf2cba93dd2f831"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4adbbe0d0b20c2077bf2cba93dd2f831">&#9670;&nbsp;</a></span>Window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Window::Window </td>
+          <td>(</td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00007">7</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a245d821e6016fa1f6970ccbbedd635f6" name="a245d821e6016fa1f6970ccbbedd635f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a245d821e6016fa1f6970ccbbedd635f6">&#9670;&nbsp;</a></span>~Window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Window::~Window </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00012">12</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5ff4d02bc39e351e6fcdee0df9bfbac6" name="a5ff4d02bc39e351e6fcdee0df9bfbac6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff4d02bc39e351e6fcdee0df9bfbac6">&#9670;&nbsp;</a></span>addComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Window::addComponent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add component to window, with anchor point relative to window's top left corner. </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00016">16</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a2ec96f7b1e29635e7a7bff479697ecf9" name="a2ec96f7b1e29635e7a7bff479697ecf9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ec96f7b1e29635e7a7bff479697ecf9">&#9670;&nbsp;</a></span>draw()</h2>
 
@@ -119,26 +201,89 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00008">8</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+<p>Draw all components in this window. </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00034">34</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4d8c7f316ef9e8a4488d00c430957c16" name="a4d8c7f316ef9e8a4488d00c430957c16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d8c7f316ef9e8a4488d00c430957c16">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a99f111f324335797153e33ba0473301c" name="a99f111f324335797153e33ba0473301c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f111f324335797153e33ba0473301c">&#9670;&nbsp;</a></span>getHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Window::init </td>
+          <td class="memname">beer::uint Window::getHeight </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00084">84</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad87519393c89733688e68233f1e9670b" name="ad87519393c89733688e68233f1e9670b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad87519393c89733688e68233f1e9670b">&#9670;&nbsp;</a></span>getWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">beer::uint Window::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00081">81</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9105675366f2efc3e9305d9231d4b204" name="a9105675366f2efc3e9305d9231d4b204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9105675366f2efc3e9305d9231d4b204">&#9670;&nbsp;</a></span>onEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Window::onEvent </td>
+          <td>(</td>
+          <td class="paramtype">InputEvent const &amp;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00003">3</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+<p>Calling this propagates the event to children, changing state. </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00041">41</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acbed440b791d87688a7d8402cfa731f0" name="acbed440b791d87688a7d8402cfa731f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbed440b791d87688a7d8402cfa731f0">&#9670;&nbsp;</a></span>setParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Window::setParent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_window_manager.html">WindowManager</a> *&#160;</td>
+          <td class="paramname"><em>parent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="window_8cpp_source.html#l00077">77</a> of file <a class="el" href="window_8cpp_source.html">window.cpp</a>.</p>
 
 </div>
 </div>

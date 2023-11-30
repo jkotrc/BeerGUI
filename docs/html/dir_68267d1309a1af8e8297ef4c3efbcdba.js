@@ -1,5 +1,6 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
+    [ "components", "dir_3c4c7c1a85608ccd561c026bec818e51.html", "dir_3c4c7c1a85608ccd561c026bec818e51" ],
     [ "BeerGUI.h", "_beer_g_u_i_8h.html", null ],
     [ "component.cpp", "component_8cpp_source.html", null ],
     [ "component.h", "component_8h_source.html", null ],
@@ -10,5 +11,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "view.h", "view_8h_source.html", null ],
     [ "window.cpp", "window_8cpp_source.html", null ],
     [ "window.h", "window_8h_source.html", null ],
+    [ "windowmanager.cpp", "windowmanager_8cpp_source.html", null ],
     [ "windowmanager.h", "windowmanager_8h_source.html", null ]
 ];

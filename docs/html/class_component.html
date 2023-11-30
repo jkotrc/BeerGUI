@@ -85,35 +85,281 @@ $(document).ready(function(){initNavTree('class_component.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_component-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Component Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="component_8h_source.html">component.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Component:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_component.png" usemap="#Component_map" alt=""/>
   <map id="Component_map" name="Component_map">
-<area href="class_slider_component.html" alt="SliderComponent" shape="rect" coords="0,56,108,80"/>
+<area href="class_button_component.html" alt="ButtonComponent" shape="rect" coords="0,56,110,80"/>
+<area href="class_slider_component.html" alt="SliderComponent" shape="rect" coords="120,56,230,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af92da17a20158e4b6887c5c2ca7e453c"><td class="memItemLeft" align="right" valign="top"><a id="af92da17a20158e4b6887c5c2ca7e453c" name="af92da17a20158e4b6887c5c2ca7e453c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>handleEvent</b> (InputEvent const &amp;event_type)=0</td></tr>
+<tr class="memitem:af92da17a20158e4b6887c5c2ca7e453c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#af92da17a20158e4b6887c5c2ca7e453c">handleEvent</a> (InputEvent const &amp;event_type)=0</td></tr>
 <tr class="separator:af92da17a20158e4b6887c5c2ca7e453c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7a2794aaa382a3fc0effedba701248c"><td class="memItemLeft" align="right" valign="top"><a id="ab7a2794aaa382a3fc0effedba701248c" name="ab7a2794aaa382a3fc0effedba701248c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a class="el" href="class_graphics.html">Graphics</a> const &amp;graphics)=0</td></tr>
-<tr class="separator:ab7a2794aaa382a3fc0effedba701248c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c78833e04a52f6a5ad639974017007f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a9c78833e04a52f6a5ad639974017007f">draw</a> (<a class="el" href="class_graphics.html">Graphics</a> &amp;graphics)=0</td></tr>
+<tr class="memdesc:a9c78833e04a52f6a5ad639974017007f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customizable draw method.  <a href="class_component.html#a9c78833e04a52f6a5ad639974017007f">More...</a><br /></td></tr>
+<tr class="separator:a9c78833e04a52f6a5ad639974017007f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6816868b17ece0084d39fdc427fea83c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a6816868b17ece0084d39fdc427fea83c">setVisible</a> (bool visible)</td></tr>
 <tr class="separator:a6816868b17ece0084d39fdc427fea83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260cae44d60ebf1cbc8ab874c8d3fcae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a260cae44d60ebf1cbc8ab874c8d3fcae">setHover</a> (bool hover)</td></tr>
+<tr class="memdesc:a260cae44d60ebf1cbc8ab874c8d3fcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set hover state. Ensure <code>draw</code> makes component look different when selected with cursor.  <a href="class_component.html#a260cae44d60ebf1cbc8ab874c8d3fcae">More...</a><br /></td></tr>
+<tr class="separator:a260cae44d60ebf1cbc8ab874c8d3fcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaab29ea159109b4d0f63e9c519be6139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aaab29ea159109b4d0f63e9c519be6139">activate</a> ()</td></tr>
+<tr class="memdesc:aaab29ea159109b4d0f63e9c519be6139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when component selected. Gives control over inputs.  <a href="class_component.html#aaab29ea159109b4d0f63e9c519be6139">More...</a><br /></td></tr>
+<tr class="separator:aaab29ea159109b4d0f63e9c519be6139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f14dbd1e9daacb3c5361525df2e215a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a7f14dbd1e9daacb3c5361525df2e215a">isVisible</a> () const</td></tr>
+<tr class="memdesc:a7f14dbd1e9daacb3c5361525df2e215a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the component is hidden.  <a href="class_component.html#a7f14dbd1e9daacb3c5361525df2e215a">More...</a><br /></td></tr>
+<tr class="separator:a7f14dbd1e9daacb3c5361525df2e215a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a1fae6416df7f295c603483f15ce4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#ad9a1fae6416df7f295c603483f15ce4a">isActive</a> () const</td></tr>
+<tr class="memdesc:ad9a1fae6416df7f295c603483f15ce4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the component is in control of inputs.  <a href="class_component.html#ad9a1fae6416df7f295c603483f15ce4a">More...</a><br /></td></tr>
+<tr class="separator:ad9a1fae6416df7f295c603483f15ce4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eb8b6f720a18e39a05b4c6c5c5e5582"><td class="memItemLeft" align="right" valign="top">beer::uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a8eb8b6f720a18e39a05b4c6c5c5e5582">getWidth</a> () const</td></tr>
+<tr class="separator:a8eb8b6f720a18e39a05b4c6c5c5e5582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e28fb804fe8f0b045aa1910edff4e2"><td class="memItemLeft" align="right" valign="top">beer::uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a01e28fb804fe8f0b045aa1910edff4e2">getHeight</a> () const</td></tr>
+<tr class="separator:a01e28fb804fe8f0b045aa1910edff4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a62c2fcfd6d2028a82f5273ef68d16e25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_region.html">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a62c2fcfd6d2028a82f5273ef68d16e25">_region</a></td></tr>
+<tr class="separator:a62c2fcfd6d2028a82f5273ef68d16e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e7d9067b9508fd5a25c2ab9937169e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4e7d9067b9508fd5a25c2ab9937169e7">_isVisible</a> = false</td></tr>
+<tr class="separator:a4e7d9067b9508fd5a25c2ab9937169e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe97967ff70c4aa2ae8614af3e449386"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#abe97967ff70c4aa2ae8614af3e449386">_cursorable</a> = false</td></tr>
+<tr class="separator:abe97967ff70c4aa2ae8614af3e449386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2586b77d62f04a4596544f7df0152f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#ab2586b77d62f04a4596544f7df0152f0">_hover</a> = false</td></tr>
+<tr class="separator:ab2586b77d62f04a4596544f7df0152f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78c575b10d0ed405deda9892a3997d5d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a78c575b10d0ed405deda9892a3997d5d">_active</a> = false</td></tr>
+<tr class="separator:a78c575b10d0ed405deda9892a3997d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c3ee6c3f687f5fab4e44d3bc455efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aa5c3ee6c3f687f5fab4e44d3bc455efd">_parent</a> = nullptr</td></tr>
+<tr class="separator:aa5c3ee6c3f687f5fab4e44d3bc455efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00013">13</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p >Base class for components. Each new component should derive from this and provide code for drawing and handling user input.</p>
+<p >Cursor is managed by parent window. If the component is selected, <code><a class="el" href="class_component.html#aaab29ea159109b4d0f63e9c519be6139" title="Called when component selected. Gives control over inputs.">activate()</a></code> is called, enabling events until <code>_active</code> becomes false again </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00016">16</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab8378fa275af98e568a7e91d33d867af" name="ab8378fa275af98e568a7e91d33d867af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8378fa275af98e568a7e91d33d867af">&#9670;&nbsp;</a></span>~Component()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Component::~Component </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00005">5</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaab29ea159109b4d0f63e9c519be6139" name="aaab29ea159109b4d0f63e9c519be6139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaab29ea159109b4d0f63e9c519be6139">&#9670;&nbsp;</a></span>activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Component::activate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Called when component selected. Gives control over inputs. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00017">17</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9c78833e04a52f6a5ad639974017007f" name="a9c78833e04a52f6a5ad639974017007f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c78833e04a52f6a5ad639974017007f">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Component::draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphics.html">Graphics</a> &amp;&#160;</td>
+          <td class="paramname"><em>graphics</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Customizable draw method. </p>
+
+<p>Implemented in <a class="el" href="class_slider_component.html#a8d8977d351f293bd760c1c9ce22c6de1">SliderComponent</a>, and <a class="el" href="class_button_component.html#a6350e0d80d87c6d2d8fba55e7ff31d94">ButtonComponent</a>.</p>
+
+</div>
+</div>
+<a id="a01e28fb804fe8f0b045aa1910edff4e2" name="a01e28fb804fe8f0b045aa1910edff4e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e28fb804fe8f0b045aa1910edff4e2">&#9670;&nbsp;</a></span>getHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">beer::uint Component::getHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00033">33</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8eb8b6f720a18e39a05b4c6c5c5e5582" name="a8eb8b6f720a18e39a05b4c6c5c5e5582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eb8b6f720a18e39a05b4c6c5c5e5582">&#9670;&nbsp;</a></span>getWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">beer::uint Component::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00030">30</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af92da17a20158e4b6887c5c2ca7e453c" name="af92da17a20158e4b6887c5c2ca7e453c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92da17a20158e4b6887c5c2ca7e453c">&#9670;&nbsp;</a></span>handleEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Component::handleEvent </td>
+          <td>(</td>
+          <td class="paramtype">InputEvent const &amp;&#160;</td>
+          <td class="paramname"><em>event_type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Specific components provide their own ways of handling events. Make there is a way to exit the component! </p>
+
+<p>Implemented in <a class="el" href="class_slider_component.html#a221c227f439912199c157967b4fd48ae">SliderComponent</a>, and <a class="el" href="class_button_component.html#ab82dfe4efe029e7412801d674eeeab25">ButtonComponent</a>.</p>
+
+</div>
+</div>
+<a id="ad9a1fae6416df7f295c603483f15ce4a" name="ad9a1fae6416df7f295c603483f15ce4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a1fae6416df7f295c603483f15ce4a">&#9670;&nbsp;</a></span>isActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::isActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the component is in control of inputs. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00026">26</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7f14dbd1e9daacb3c5361525df2e215a" name="a7f14dbd1e9daacb3c5361525df2e215a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f14dbd1e9daacb3c5361525df2e215a">&#9670;&nbsp;</a></span>isVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::isVisible </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the component is hidden. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00022">22</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a260cae44d60ebf1cbc8ab874c8d3fcae" name="a260cae44d60ebf1cbc8ab874c8d3fcae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260cae44d60ebf1cbc8ab874c8d3fcae">&#9670;&nbsp;</a></span>setHover()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Component::setHover </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hover</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set hover state. Ensure <code>draw</code> makes component look different when selected with cursor. </p>
+
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00013">13</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a6816868b17ece0084d39fdc427fea83c" name="a6816868b17ece0084d39fdc427fea83c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6816868b17ece0084d39fdc427fea83c">&#9670;&nbsp;</a></span>setVisible()</h2>
 
@@ -130,7 +376,152 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00003">3</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="component_8cpp_source.html#l00009">9</a> of file <a class="el" href="component_8cpp_source.html">component.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a78c575b10d0ed405deda9892a3997d5d" name="a78c575b10d0ed405deda9892a3997d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78c575b10d0ed405deda9892a3997d5d">&#9670;&nbsp;</a></span>_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::_active = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00043">43</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+
+</div>
+</div>
+<a id="abe97967ff70c4aa2ae8614af3e449386" name="abe97967ff70c4aa2ae8614af3e449386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe97967ff70c4aa2ae8614af3e449386">&#9670;&nbsp;</a></span>_cursorable</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::_cursorable = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00041">41</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+
+</div>
+</div>
+<a id="ab2586b77d62f04a4596544f7df0152f0" name="ab2586b77d62f04a4596544f7df0152f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2586b77d62f04a4596544f7df0152f0">&#9670;&nbsp;</a></span>_hover</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::_hover = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00042">42</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+
+</div>
+</div>
+<a id="a4e7d9067b9508fd5a25c2ab9937169e7" name="a4e7d9067b9508fd5a25c2ab9937169e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e7d9067b9508fd5a25c2ab9937169e7">&#9670;&nbsp;</a></span>_isVisible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Component::_isVisible = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00040">40</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+
+</div>
+</div>
+<a id="aa5c3ee6c3f687f5fab4e44d3bc455efd" name="aa5c3ee6c3f687f5fab4e44d3bc455efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5c3ee6c3f687f5fab4e44d3bc455efd">&#9670;&nbsp;</a></span>_parent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_window.html">Window</a>* Component::_parent = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00044">44</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
+
+</div>
+</div>
+<a id="a62c2fcfd6d2028a82f5273ef68d16e25" name="a62c2fcfd6d2028a82f5273ef68d16e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c2fcfd6d2028a82f5273ef68d16e25">&#9670;&nbsp;</a></span>_region</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_region.html">Region</a> Component::_region</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="component_8h_source.html#l00039">39</a> of file <a class="el" href="component_8h_source.html">component.h</a>.</p>
 
 </div>
 </div>

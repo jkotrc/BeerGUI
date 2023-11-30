@@ -88,14 +88,13 @@ $(document).ready(function(){initNavTree('core_8cpp_source.html',''); initResiza
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;core.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keywordtype">bool</span> pointInRegion(<a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span>&amp; reg, <a class="code hl_struct" href="struct_point.html">Point</a> <span class="keyword">const</span>&amp; point) {</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>}</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">bool</span> regionsOverlap(<a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span>&amp; reg1, <a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span>&amp; reg2) {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>}</div>
-<div class="ttc" id="astruct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">Point on the screen with (0,0) at top left and +y down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00034">core.h:34</a></div></div>
-<div class="ttc" id="astruct_region_html"><div class="ttname"><a href="struct_region.html">Region</a></div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00047">core.h:47</a></div></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keywordtype">bool</span> pointInRegion(<a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span> &amp;reg, <a class="code hl_struct" href="struct_point.html">Point</a> <span class="keyword">const</span> &amp;point) {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>  <span class="keywordflow">return</span> (point.x &lt;= reg.bottom_right.x &amp;&amp; reg.top_left.x &lt;= point.x) &amp;&amp;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>         (point.y &lt;= reg.bottom_right.y &amp;&amp; reg.top_left.y &lt;= point.y);</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">bool</span> regionsOverlap(<a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span> &amp;reg1, <a class="code hl_struct" href="struct_region.html">Region</a> <span class="keyword">const</span> &amp;reg2) { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="ttc" id="astruct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">Point on the screen with (0,0) at top left and +y down.</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00038">core.h:38</a></div></div>
+<div class="ttc" id="astruct_region_html"><div class="ttname"><a href="struct_region.html">Region</a></div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00051">core.h:51</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

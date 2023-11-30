@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['update_0',['update',['../class_g_l_backend.html#a7f64f1830f1ee632985b315987fe1c24',1,'GLBackend']]]
+  ['region_0',['Region',['../struct_region.html',1,'']]],
+  ['renderer_1',['Renderer',['../class_renderer.html',1,'']]]
 ];

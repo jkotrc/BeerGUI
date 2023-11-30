@@ -94,29 +94,185 @@ $(document).ready(function(){initNavTree('class_window_manager.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a23b0b3781bf1dce63d9f5cff80b9a5f1"><td class="memItemLeft" align="right" valign="top"><a id="a23b0b3781bf1dce63d9f5cff80b9a5f1" name="a23b0b3781bf1dce63d9f5cff80b9a5f1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>WindowManager</b> (unsigned int width, unsigned int height)</td></tr>
-<tr class="separator:a23b0b3781bf1dce63d9f5cff80b9a5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acec8853d2fac2ba751bc9441f854bf9b"><td class="memItemLeft" align="right" valign="top"><a id="acec8853d2fac2ba751bc9441f854bf9b" name="acec8853d2fac2ba751bc9441f854bf9b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
-<tr class="memdesc:acec8853d2fac2ba751bc9441f854bf9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this in your <a class="el" href="class_window_manager.html#acec8853d2fac2ba751bc9441f854bf9b" title="Call this in your setup() to prepare display code.">setup()</a> to prepare display code. <br /></td></tr>
-<tr class="separator:acec8853d2fac2ba751bc9441f854bf9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f9697f91524b4cdf0b311022be485c"><td class="memItemLeft" align="right" valign="top"><a id="af0f9697f91524b4cdf0b311022be485c" name="af0f9697f91524b4cdf0b311022be485c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (int id, <a class="el" href="class_window.html">Window</a> &amp;&amp;window)</td></tr>
-<tr class="memdesc:af0f9697f91524b4cdf0b311022be485c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a window by ID. Preferably use an enum for this. <br /></td></tr>
-<tr class="separator:af0f9697f91524b4cdf0b311022be485c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2968ad7f97d2680527d3c51750e56d"><td class="memItemLeft" align="right" valign="top"><a id="aaf2968ad7f97d2680527d3c51750e56d" name="aaf2968ad7f97d2680527d3c51750e56d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>makeActive</b> (int id)</td></tr>
-<tr class="memdesc:aaf2968ad7f97d2680527d3c51750e56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the currently displayed window to window with id. <br /></td></tr>
-<tr class="separator:aaf2968ad7f97d2680527d3c51750e56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac8f160d39315896a4555c3036cd61f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#a3ac8f160d39315896a4555c3036cd61f">WindowManager</a> (<a class="el" href="class_graphics.html">Graphics</a> &amp;g, beer::uint width, beer::uint height)</td></tr>
+<tr class="separator:a3ac8f160d39315896a4555c3036cd61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4cf0c33b385871bcd8daec214f526f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#a2f4cf0c33b385871bcd8daec214f526f">update</a> ()</td></tr>
+<tr class="memdesc:a2f4cf0c33b385871bcd8daec214f526f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this once per iteration of loop..  <a href="class_window_manager.html#a2f4cf0c33b385871bcd8daec214f526f">More...</a><br /></td></tr>
+<tr class="separator:a2f4cf0c33b385871bcd8daec214f526f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d98337b51f9efb3f835ece930e06538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#a3d98337b51f9efb3f835ece930e06538">add</a> (beer::uint id, <a class="el" href="class_window.html">Window</a> const &amp;window)</td></tr>
+<tr class="memdesc:a3d98337b51f9efb3f835ece930e06538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a window by ID. Preferably use an enum to name the different windows.  <a href="class_window_manager.html#a3d98337b51f9efb3f835ece930e06538">More...</a><br /></td></tr>
+<tr class="separator:a3d98337b51f9efb3f835ece930e06538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c5147338229832a78d21eb4f5bf31c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#a15c5147338229832a78d21eb4f5bf31c">makeActive</a> (beer::uint id)</td></tr>
+<tr class="memdesc:a15c5147338229832a78d21eb4f5bf31c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the currently displayed window to window with id.  <a href="class_window_manager.html#a15c5147338229832a78d21eb4f5bf31c">More...</a><br /></td></tr>
+<tr class="separator:a15c5147338229832a78d21eb4f5bf31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27f54aa45016b96c557e7c804d3ddab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#ac27f54aa45016b96c557e7c804d3ddab">onEvent</a> (InputEvent const &amp;event)</td></tr>
+<tr class="memdesc:ac27f54aa45016b96c557e7c804d3ddab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calling this propagates the event to children, changing state.  <a href="class_window_manager.html#ac27f54aa45016b96c557e7c804d3ddab">More...</a><br /></td></tr>
+<tr class="separator:ac27f54aa45016b96c557e7c804d3ddab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b114387fa0841de11cde9d6aeff7317"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_graphics.html">Graphics</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window_manager.html#a9b114387fa0841de11cde9d6aeff7317">getGraphics</a> () const</td></tr>
+<tr class="separator:a9b114387fa0841de11cde9d6aeff7317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >WIP: Keeps track of which window is visible. Changes state in response to input events and propagates inputs to subwindows.</p>
 <p >Could possibly be extended to manage multiple windows on one screen, or with overlapping panels. </p>
 
 <p class="definition">Definition at line <a class="el" href="windowmanager_8h_source.html#l00017">17</a> of file <a class="el" href="windowmanager_8h_source.html">windowmanager.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3ac8f160d39315896a4555c3036cd61f" name="a3ac8f160d39315896a4555c3036cd61f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ac8f160d39315896a4555c3036cd61f">&#9670;&nbsp;</a></span>WindowManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WindowManager::WindowManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graphics.html">Graphics</a> &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00004">4</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3d98337b51f9efb3f835ece930e06538" name="a3d98337b51f9efb3f835ece930e06538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d98337b51f9efb3f835ece930e06538">&#9670;&nbsp;</a></span>add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WindowManager::add </td>
+          <td>(</td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_window.html">Window</a> const &amp;&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a window by ID. Preferably use an enum to name the different windows. </p>
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00012">12</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9b114387fa0841de11cde9d6aeff7317" name="a9b114387fa0841de11cde9d6aeff7317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b114387fa0841de11cde9d6aeff7317">&#9670;&nbsp;</a></span>getGraphics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_graphics.html">Graphics</a> &amp; WindowManager::getGraphics </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00032">32</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a15c5147338229832a78d21eb4f5bf31c" name="a15c5147338229832a78d21eb4f5bf31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c5147338229832a78d21eb4f5bf31c">&#9670;&nbsp;</a></span>makeActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WindowManager::makeActive </td>
+          <td>(</td>
+          <td class="paramtype">beer::uint&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the currently displayed window to window with id. </p>
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00020">20</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac27f54aa45016b96c557e7c804d3ddab" name="ac27f54aa45016b96c557e7c804d3ddab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac27f54aa45016b96c557e7c804d3ddab">&#9670;&nbsp;</a></span>onEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WindowManager::onEvent </td>
+          <td>(</td>
+          <td class="paramtype">InputEvent const &amp;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calling this propagates the event to children, changing state. </p>
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00028">28</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2f4cf0c33b385871bcd8daec214f526f" name="a2f4cf0c33b385871bcd8daec214f526f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4cf0c33b385871bcd8daec214f526f">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WindowManager::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call this once per iteration of loop.. </p>
+
+<p class="definition">Definition at line <a class="el" href="windowmanager_8cpp_source.html#l00007">7</a> of file <a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="windowmanager_8h_source.html">windowmanager.h</a></li>
+<li>src/<a class="el" href="windowmanager_8cpp_source.html">windowmanager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

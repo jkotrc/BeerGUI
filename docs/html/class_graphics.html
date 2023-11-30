@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_graphics.html',''); initResizabl
   <div class="headertitle"><div class="title">Graphics Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="renderer_8h_source.html">renderer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Graphics:</div>
 <div class="dyncontent">
@@ -101,19 +103,72 @@ Inheritance diagram for Graphics:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a388da029dc5d3f7d6052e9a96f0112c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a388da029dc5d3f7d6052e9a96f0112c3">drawPixel</a> (int16_t x, int16_t y, uint16_t color)=0</td></tr>
-<tr class="memdesc:a388da029dc5d3f7d6052e9a96f0112c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_graphics.html#a388da029dc5d3f7d6052e9a96f0112c3">More...</a><br /></td></tr>
-<tr class="separator:a388da029dc5d3f7d6052e9a96f0112c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa509a1764aababd107b8daa00307fa4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#aaa509a1764aababd107b8daa00307fa4">fill</a> (<a class="el" href="struct_point.html">Point</a> const &amp;tl, <a class="el" href="struct_point.html">Point</a> const &amp;br)=0</td></tr>
-<tr class="memdesc:aaa509a1764aababd107b8daa00307fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with color  <a href="class_graphics.html#aaa509a1764aababd107b8daa00307fa4">More...</a><br /></td></tr>
-<tr class="separator:aaa509a1764aababd107b8daa00307fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dbd141364d8504b58520d079866a749"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a7dbd141364d8504b58520d079866a749">drawPixel</a> (<a class="el" href="struct_point.html">Point</a> const &amp;point, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a7dbd141364d8504b58520d079866a749"><td class="mdescLeft">&#160;</td><td class="mdescRight">set pixel color at given point  <a href="class_graphics.html#a7dbd141364d8504b58520d079866a749">More...</a><br /></td></tr>
+<tr class="separator:a7dbd141364d8504b58520d079866a749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6504b04f3e48b69ed380b239947811ba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a6504b04f3e48b69ed380b239947811ba">fill</a> (<a class="el" href="struct_region.html">Region</a> const &amp;region, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a6504b04f3e48b69ed380b239947811ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">fill region with given color  <a href="class_graphics.html#a6504b04f3e48b69ed380b239947811ba">More...</a><br /></td></tr>
+<tr class="separator:a6504b04f3e48b69ed380b239947811ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4df19184d11529170b4df8366af0efec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a4df19184d11529170b4df8366af0efec">drawLine</a> (<a class="el" href="struct_point.html">Point</a> const &amp;from, <a class="el" href="struct_point.html">Point</a> const &amp;to, <a class="el" href="struct_color.html">Color</a> const &amp;color)=0</td></tr>
+<tr class="memdesc:a4df19184d11529170b4df8366af0efec"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw colored line between points  <a href="class_graphics.html#a4df19184d11529170b4df8366af0efec">More...</a><br /></td></tr>
+<tr class="separator:a4df19184d11529170b4df8366af0efec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics.html#a50c2519443e09f9ff7f7bce47f2d1fce">update</a> ()=0</td></tr>
+<tr class="memdesc:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">must be called once per loop to update display  <a href="class_graphics.html#a50c2519443e09f9ff7f7bce47f2d1fce">More...</a><br /></td></tr>
+<tr class="separator:a50c2519443e09f9ff7f7bce47f2d1fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00007">7</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
+<div class="textblock"><p >Base class for all drawing. Components use this to draw themselves </p>
+
+<p class="definition">Definition at line <a class="el" href="renderer_8h_source.html#l00009">9</a> of file <a class="el" href="renderer_8h_source.html">renderer.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a388da029dc5d3f7d6052e9a96f0112c3" name="a388da029dc5d3f7d6052e9a96f0112c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a388da029dc5d3f7d6052e9a96f0112c3">&#9670;&nbsp;</a></span>drawPixel()</h2>
+<a id="a4df19184d11529170b4df8366af0efec" name="a4df19184d11529170b4df8366af0efec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df19184d11529170b4df8366af0efec">&#9670;&nbsp;</a></span>drawLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Graphics::drawLine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>draw colored line between points </p>
+
+<p>Implemented in <a class="el" href="class_renderer.html#a8e33abe41cdd73abd479d5f65948abfd">Renderer&lt; RenderBackend &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a7dbd141364d8504b58520d079866a749" name="a7dbd141364d8504b58520d079866a749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dbd141364d8504b58520d079866a749">&#9670;&nbsp;</a></span>drawPixel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,19 +179,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Graphics::drawPixel </td>
           <td>(</td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
           <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
@@ -154,12 +203,12 @@ Public Member Functions</h2></td></tr>
 
 <p>set pixel color at given point </p>
 
-<p>Implemented in <a class="el" href="class_renderer.html#ab08fcafd95d3039d942ac9c9238846ba">Renderer&lt; RenderBackend &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_renderer.html#a6c2f67756421926967103983168d4b52">Renderer&lt; RenderBackend &gt;</a>.</p>
 
 </div>
 </div>
-<a id="aaa509a1764aababd107b8daa00307fa4" name="aaa509a1764aababd107b8daa00307fa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa509a1764aababd107b8daa00307fa4">&#9670;&nbsp;</a></span>fill()</h2>
+<a id="a6504b04f3e48b69ed380b239947811ba" name="a6504b04f3e48b69ed380b239947811ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6504b04f3e48b69ed380b239947811ba">&#9670;&nbsp;</a></span>fill()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,14 +219,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Graphics::fill </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>tl</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_region.html">Region</a> const &amp;&#160;</td>
+          <td class="paramname"><em>region</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> const &amp;&#160;</td>
-          <td class="paramname"><em>br</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_color.html">Color</a> const &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -192,9 +241,38 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>fill region with color </p>
+<p>fill region with given color </p>
 
-<p>Implemented in <a class="el" href="class_renderer.html#ab2fa10627e140208b346f86207170407">Renderer&lt; RenderBackend &gt;</a>.</p>
+<p>Implemented in <a class="el" href="class_renderer.html#a2215e2ddaec9b7e038289e4205782f72">Renderer&lt; RenderBackend &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a50c2519443e09f9ff7f7bce47f2d1fce" name="a50c2519443e09f9ff7f7bce47f2d1fce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c2519443e09f9ff7f7bce47f2d1fce">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Graphics::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>must be called once per loop to update display </p>
+
+<p>Implemented in <a class="el" href="class_renderer.html#ad726e800cc588af5f046eabc1909397f">Renderer&lt; RenderBackend &gt;</a>.</p>
 
 </div>
 </div>

@@ -94,6 +94,7 @@ bool GLBackend::init() {
     GLBackend *ptr = (GLBackend *)glfwGetWindowUserPointer(window);
     // TODO Call _WindowManager here
     //_Window::_windowPointer->handleKeys(key, scancode, action, mods);
+    if (action != GLFW_PRESS) return;
     switch (key) {
     case (GLFW_KEY_A):
       ptr->onEvent(InputEvent::MINUS);

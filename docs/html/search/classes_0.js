@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['color_0',['Color',['../struct_color.html',1,'']]],
-  ['component_1',['Component',['../class_component.html',1,'']]]
+  ['buttoncomponent_0',['ButtonComponent',['../class_button_component.html',1,'']]]
 ];

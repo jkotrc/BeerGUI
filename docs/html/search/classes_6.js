@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['view_0',['View',['../class_view.html',1,'']]]
+  ['screen_0',['Screen',['../struct_screen.html',1,'']]],
+  ['slidercomponent_1',['SliderComponent',['../class_slider_component.html',1,'']]]
 ];

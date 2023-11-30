@@ -1,6 +1,7 @@
 var class_window_manager =
 [
-    [ "add", "class_window_manager.html#af0f9697f91524b4cdf0b311022be485c", null ],
-    [ "makeActive", "class_window_manager.html#aaf2968ad7f97d2680527d3c51750e56d", null ],
-    [ "setup", "class_window_manager.html#acec8853d2fac2ba751bc9441f854bf9b", null ]
+    [ "add", "class_window_manager.html#a3d98337b51f9efb3f835ece930e06538", null ],
+    [ "makeActive", "class_window_manager.html#a15c5147338229832a78d21eb4f5bf31c", null ],
+    [ "onEvent", "class_window_manager.html#ac27f54aa45016b96c557e7c804d3ddab", null ],
+    [ "update", "class_window_manager.html#a2f4cf0c33b385871bcd8daec214f526f", null ]
 ];
