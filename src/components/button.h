@@ -1,7 +1,7 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-#include "../component.h"
+#include "component.h"
 
 class ButtonComponent : public Component {
     public:
@@ -11,7 +11,7 @@ class ButtonComponent : public Component {
         void draw(Graphics& graphics) override;
     protected:
         ButtonFunc _action;
-        uint8_t _progress;
+        beer::uint_progress;
         bool _cursorable = true;
 };
 

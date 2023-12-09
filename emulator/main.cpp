@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <iostream>
 #include <memory>
 #include <stdio.h>
@@ -24,8 +25,8 @@ Renderer<GLBackend> ren(&backend);
 WindowManager manager(ren, emulator::width, emulator::height);
 Window window(emulator::width, emulator::height);
 
-SliderComponent slider({{10, 10}, {110, 20}}, 255/2);
-SliderComponent slider2({{10, 30}, {110, 40}}, 255/2);
+SliderComponent slider({{5, 5}, {60, 8}}, 255/2);
+SliderComponent slider2({{5, 10}, {60, 13}}, 255/2);
 
 void setup() {
     window.addComponent(&slider);

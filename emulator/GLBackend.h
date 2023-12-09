@@ -12,8 +12,10 @@
 #include "renderer.h"
 
 namespace emulator {
-        constexpr beer::uint width = 756;
-        constexpr beer::uint height = 384;
+        // constexpr beer::uint width = 756;
+        // constexpr beer::uint height = 384;
+        constexpr beer::uint width = 128;
+        constexpr beer::uint height = 64;
 }
 
 /**

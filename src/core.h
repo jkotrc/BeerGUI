@@ -2,7 +2,7 @@
 #define CORE_H_
 
 #ifndef BEER_ARDUINO
-#include <cstdint>
+ // #include <cstdint>
 #endif
 
 namespace beer {
@@ -57,5 +57,10 @@ struct Region {
 bool pointInRegion(Region const& reg, Point const& point);
 /// return true if given regions overlap
 bool regionsOverlap(Region const& reg1, Region const& reg2);
+/**
+ * Convert Color to 16 bit unsigned integer
+ * with RGB565 format.
+ */
+beer::uint colorToInt565(Color const& color);
 
 #endif // CORE_H_

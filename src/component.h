@@ -6,7 +6,8 @@
 
 class Window;
 
-constexpr Color active_color = Color{0xaa, 0xaa, 0xff};
+// constexpr Color active_color = Color{0xaa, 0xaa, 0xff};
+constexpr Color active_color = Color{0x00, 0x00, 0x00};
 
 /**
  * Base class for components. Each new component should derive from this
