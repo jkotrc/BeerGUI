@@ -2,8 +2,9 @@
 
 using namespace beer;
 
-SliderComponent::SliderComponent(Region const& region, uint8_t initial_progress) : _progress((initial_progress)) {
+SliderComponent::SliderComponent(Region const& region, uint initial_progress) : _progress((initial_progress)) {
     _region = region;
+
 }
 
 void SliderComponent::handleEvent(InputEvent const& event_type) {
@@ -25,10 +26,9 @@ void SliderComponent::handleEvent(InputEvent const& event_type) {
 
 }
 
-
 void SliderComponent::draw(Graphics& g) {
     Region head;
-    const uint head_width = 10; //TODO make this configurable
+    const uint head_width = 4; //TODO make this configurable
     const uint basex = _region.top_left.x + (getWidth() *  _progress) / 255;
     const Color slider_color = _hover ? active_color : Color{0xff, 0xff, 0xff};
 

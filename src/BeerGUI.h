@@ -5,12 +5,14 @@
  * @file BeerGUI.h
  * @brief Include file for arduino sketches
  */
-#define BEER_ARDUINO
 #include "core.h"
 #include "renderer.h"
+#ifdef BEER_ARDUINO
+#include "renderer-adafruit.h"
+#endif
 #include "window.h"
 #include "component.h"
 
-#include "components/slider.h"
+#include "slider.h"
 
 #endif // BEERGUI_H_

@@ -3,8 +3,8 @@ set(DISPLAYLIB_SOURCES
   core.cpp
   window.cpp
   component.cpp
-  components/slider.cpp
-  components/button.cpp
+  slider.cpp
+  #button.cpp
   windowmanager.cpp
 )
 
@@ -12,7 +12,7 @@ set(DISPLAYLIB_HEADERS
   windowmanager.h
   window.h
   component.h
-  components/button.h
+  button.h
   renderer.h
 )
 
