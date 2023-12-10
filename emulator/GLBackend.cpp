@@ -37,7 +37,7 @@ void main() {
     vec4 texColor = texture(textureSampler, texCoord);
 
     // Output the sampled color as the final fragment color
-    fragColor = texColor;
+    fragColor = vec4(0,texColor.g,texColor.b,1);
 }
 )";
 
@@ -45,7 +45,7 @@ GLBackend::GLBackend(uint width, uint height)
     : _dims{width, height}, _window(nullptr) {
   uint32_t *buf = new uint32_t[width * height];
   for (uint i = 0; i < width*height; i++) {
-      buf[i] = 0xcccc00;
+      buf[i] = 0x111000; //TODO more adequate
   }
   _screen = {buf, width, height};
 
@@ -123,7 +123,7 @@ bool GLBackend::init() {
       1.0f, 1.0f,
   };
 
-  glClearColor(0.4f, 0.8f, 0.3f, 0.5f);
+  glClearColor(0.0f, 0.1f, 0.0f, 1.0f);
 
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices,
@@ -196,6 +196,11 @@ std::vector<InputEvent> GLBackend::clearEvents() {
 //     _backend = new GLBackend();
 // }
 
+uint32_t getPixelColor(Color const& color) {
+    uint32_t ret = (color.b << 8) | (color.g << 16) | (color.r << 24);
+    return ret;
+}
+
 template <> void GLRenderer::setup() {
   bool status;
   try {
@@ -209,11 +214,6 @@ template <> void GLRenderer::setup() {
   }
 }
 
-uint32_t getPixelColor(Color const& color) {
-    uint32_t ret = (color.b << 8) | (color.g << 16) | (color.r << 24);
-    return ret;
-}
-
 template <>
 void GLRenderer::drawPixel(Point const &point, Color const &color) {
     if(point.x <=_backend->_dims.x && point.y <= _backend->_dims.y) {
@@ -221,10 +221,14 @@ void GLRenderer::drawPixel(Point const &point, Color const &color) {
     }
 }
 
+template <>
+void GLRenderer::drawText(Point const& anchor, const char* text, Color const& color) {
+
+}
+
 template <> void GLRenderer::fill(Region const &region, Color const &color) {
     for (uint i = region.top_left.x; i < region.bottom_right.x; i++) {
       for (uint j = region.top_left.y; j < region.bottom_right.y; j++) {
-          // *_backend->_screen.at({i, _backend->_dims.y-j}) = 0xff000000;
           *_backend->_screen.at({i, _backend->_dims.y-j}) = getPixelColor(color);
       }
     }

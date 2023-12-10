@@ -18,7 +18,7 @@ class Graphics {
     virtual void update() = 0;
     //TODO
     //void drawBitmap
-    //void drawText
+    virtual void drawText(Point const& anchor, const char* text, Color const& color) = 0;
 };
 
 /**
@@ -61,6 +61,7 @@ class Renderer : public Graphics {
     void drawPixel(Point const& point, Color const& color) override;
     void fill(Region const& region, Color const& color) override;
     void drawLine(Point const& from, Point const& to, Color const& color) override;
+    void drawText(Point const& anchor, const char* text, Color const& color) override;
   private:
     RenderBackend* _backend;
 };

@@ -17,6 +17,8 @@ class Window;
 class WindowManager {
     public:
         WindowManager(Graphics& g, beer::uint width, beer::uint height);
+
+        ~WindowManager();
         /// Call this once per iteration of loop..
         void update();
         /// Add a window by ID. Preferably use an enum to name the different windows.
@@ -30,6 +32,7 @@ class WindowManager {
     private:
         beer::uint _active_window;
         beer::uint _nwindows;
+        Component** _components;
         Window* _windows;
         Graphics& _graphics;
 };

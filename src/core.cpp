@@ -11,5 +11,5 @@ bool regionsOverlap(Region const &reg1, Region const &reg2) { return true; }
 //TODO convert color construct to RGB565 format uesd in GFX
 // for now, just black or white.
 uint colorToInt565(Color const& color) {
-    return color.r == 0 && color.g == 0 && color.b == 0;
+    return !(color.r == 0 && color.g == 0 && color.b == 0);
 }

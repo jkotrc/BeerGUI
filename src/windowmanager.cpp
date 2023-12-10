@@ -2,7 +2,13 @@
 #include "window.h"
 
 WindowManager::WindowManager(Graphics& g, beer::uint width, beer::uint height)
-    : _windows(nullptr), _graphics(g), _active_window(0) {}
+    : _windows(nullptr), _graphics(g), _active_window(0) {
+
+}
+
+WindowManager::~WindowManager() {
+
+}
 
 void WindowManager::update() {
     _windows->draw();
