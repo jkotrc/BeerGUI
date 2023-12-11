@@ -2,9 +2,9 @@
 
 using namespace beer;
 
-SliderComponent::SliderComponent(Region const& region, uint initial_progress) : _progress((initial_progress)) {
-    _region = region;
-
+SliderComponent::SliderComponent(Point const& dimensions, beer::uint initial_progress)
+    : _progress((initial_progress)), _dimensions(dimensions) {
+    _region = {{0,0},{dimensions.x, dimensions.y}};
 }
 
 void SliderComponent::handleEvent(InputEvent const& event_type) {

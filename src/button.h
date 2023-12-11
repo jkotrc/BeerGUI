@@ -11,7 +11,6 @@ class ButtonComponent : public Component {
         void draw(Graphics& graphics) override;
     protected:
         ButtonFunc _action;
-        beer::uint_progress;
         bool _cursorable = true;
 };
 

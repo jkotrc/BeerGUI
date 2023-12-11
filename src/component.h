@@ -38,9 +38,10 @@ class Component {
         bool isActive() const;
         beer::uint getWidth() const;
         beer::uint getHeight() const;
+        Region getRegion() const;
     protected:
         Region _region;
-        bool _isVisible = false;
+        bool _isVisible = true;
         bool _cursorable = false; //Whether cursor should stop at this component
         bool _hover = false; //Whether cursor is hovering
         bool _active = false;

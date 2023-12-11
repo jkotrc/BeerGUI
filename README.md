@@ -1,34 +1,32 @@
 # Beer GUI
 
-This project provides a small useful toolkit for building simple embedded display interfaces. It should be quick to adapt to any specific display and build as an arduino library for your sketch.
+## Overview
 
-Features (Most TBA):
-- Quick adaptibility to display libraries
-- basic window manager with cursor and state transitiion on input
-- Reusable, extendable components
+This project provides a small useful toolkit for building simple embedded display interfaces. The `src` folder can be included through the Arduino IDE for use in your sketch. It is expected to work with any display using `Adafruit_GFX`, which BeerGUI depends on.
+
+To get BeerGUI working on any other display, you must have a rendering class (like `Adafruit_GFX`) for the display. Then, a `Renderer<Backend>` class needs to be defined for that rendering class. An instance is fed to `WindowManager`
+
+### Basic Features
+- Usable on a wide class of display hardware
+- basic window manager with cursor and 3 input control
+- Reusable, customizable components
+
+### Planned Featuers
 - Unicode display and fonts
+- Multiple windows visible on screen
+- Overlapping windows
+- More general input
 
-A component can be made by making a subclass of `Component`. You can specify the `handleEvent` function and `draw` using drawing primitives
-- Text
-- Pixel Fill
-- Pixel Set
-- Bitmap
-- Line
-- Anything else?
-
-The draw functions of components use the `Graphics` API. The particular implementation is given by the `Renderer` types, depending on which rendering backend you choose (Adafruit, linux OpenGL, ...). 
-
-Arduino seems to automate all the build configuration, but it would nonetheless be useful to have a solid one for this project eventually. This would allow writing embedded code independent of Arduino as well
 
 ## Setup
 
-### Arduino (WIP)
+### Arduino
 
-It should be possible to add a project description file to the `src/` and then import it into Arduino IDE. 
+In the Arduino IDE, go to `Sketch > Include Library > Add .ZIP Library` and select the `src/` folder (it doesn't need to be zip archived). See `examples/` for example arduino sketches
 
 ### Linux
 
-The meat of the project is platform independent and development uses a fake "emulator" to draw the interface in a window and take input from keyboard. To build the emulator, run these commands
+BeerGUI can be used as a C++ library. An example project `emulator/` simulates a SSD1306 display interface. To build the library and emulator, run these commands
 
 ``` sh
 ./setup-emulator.sh
@@ -38,9 +36,8 @@ If successful, this will create the emulator executable in the `dist/` folder.
 
 ### Windows (TBA)
 
-CMake does exist on windows, but will require installing visual studio and probably some extra configuration in the project's `CMakeLists.txt`. Contributions welcome
+The C++ library and emulator can be built on windows, but will require installing visual studio and probably adding extra configuration in `CMakeLists.txt`. Contributions welcome
 
 ## Documentation
 
-See `docs/html/index.html` for the documentation page, but here is a general overview:
-
+See `examples/` folder for usage. More detailed code documentation should be visible within IDEs. Full documentation in HTML format can be generated using `doxygen`. See `docs/html/index.html` for the generated documentation page

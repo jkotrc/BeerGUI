@@ -1,7 +1,7 @@
-#include "core.h"
 #ifndef RENDERER-ADAFRUIT_H_
 #define RENDERER-ADAFRUIT_H_
 
+#include "core.h"
 #include <Adafruit_GFX.h>
 
 /**

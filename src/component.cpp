@@ -3,7 +3,6 @@
 using namespace beer;
 
 Component::~Component() {
-    //TODO call destructors on all children
 }
 
 void Component::setVisible(bool visible) {
@@ -17,7 +16,6 @@ void Component::setHover(bool hover) {
 void Component::activate() {
     _active = true;
 }
-
 
 bool Component::isVisible() const {
     return _isVisible;
@@ -34,5 +32,6 @@ beer::uint Component::getHeight() const {
     return _region.bottom_right.y - _region.top_left.y;
 }
 
-
-
+Region Component::getRegion() const {
+    return _region;
+}

@@ -1,10 +1,14 @@
 #include <cstdint>
 #include <iostream>
 #include <memory>
+#include <cassert>
 #include <stdio.h>
 #include <signal.h>
 
 #include "GLBackend.h"
+
+#define WIDTH emulator::width
+#define HEIGHT emulator::height
 
 /**
  * This file uses BeerGUI to create an example interface
@@ -17,21 +21,26 @@
 //START of Arduino
 
 #include "BeerGUI.h" //Use angle brackets <BeerGUI.h> in arduino
-
 using namespace beer;
 
-GLBackend backend(emulator::width, emulator::height);
-Renderer<GLBackend> ren(&backend);
-WindowManager manager(ren, emulator::width, emulator::height);
-Window window(emulator::width, emulator::height);
+enum Windows {
+    W_MAINMENU = 0,
+    W_SETTINGS,
+    W_NWINDOWS
+};
 
-SliderComponent slider({{5, 5}, {60, 8}}, 255/2);
-SliderComponent slider2({{5, 10}, {60, 13}}, 255/2);
+GLBackend backend(WIDTH, HEIGHT);
+Renderer<GLBackend> ren(&backend);
+WindowManager manager(ren, WIDTH, HEIGHT);
+Window* windows[W_NWINDOWS];
 
 void setup() {
-    window.addComponent(&slider);
-    window.addComponent(&slider2);
-    manager.add(0, window);
+    windows[W_MAINMENU] = manager.add();
+    windows[W_SETTINGS] = manager.add();
+    // manager.addComponent(windows[W_MAINMENU], {{10,10}, new ButtonComponent("Settings", manager.transition(W_SETTINGS))});
+    assert(windows[W_MAINMENU]->addComponent({{10,10}, new SliderComponent({50, 5}, 255/2)}));
+    assert(windows[W_MAINMENU]->addComponent({{30,50}, new SliderComponent({50, 5}, 255/2)}));
+    // manager.addComponent(windows[W_SETTINGS], {{WIDTH/2,HEIGHT/2}, new ButtonComponent("Back", manager.transition(W_MAINMENU))});
 }
 
 void loop() {
