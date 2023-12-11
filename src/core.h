@@ -94,6 +94,9 @@ struct Point {
   Point operator+(Point const& other) {
     return {x+other.x, y+other.y};
   }
+  Point operator-(Point const& other) {
+    return {x-other.x, y-other.y};
+  }
   Point& operator+=(Point const& other) {
     x += other.x;
     y += other.y;
@@ -116,6 +119,10 @@ struct Region {
   Region(Point const &tl, Point const &br) : top_left(tl), bottom_right(br) {}
   Region operator+(Region const& other) {
     return {top_left+other.top_left, bottom_right+other.bottom_right};
+  }
+  //TODO this can overflow!
+  Region operator-(Region const& other) {
+    return {top_left-other.top_left, bottom_right-other.bottom_right};
   }
   Point top_left;
   Point bottom_right;

@@ -1,5 +1,6 @@
 #include "core.h"
 #include "window.h"
+#include <iostream>
 
 using namespace beer;
 
@@ -72,6 +73,9 @@ Window::Window(WindowManager* parent, beer::uint width, beer::uint height)
 bool Window::addComponent(WindowedComponent const& component) {
     if (_parent == nullptr || component.cmp == nullptr) return false;
     _components.push_back(_parent->registerComponent(this, component));
+    if (_components.size() == 1) {
+        _components[0]->cmp->setHover(true);
+    }
 
     return true;
 }
@@ -110,16 +114,18 @@ void Window::onEvent(InputEvent const& event) {
                 }
                 break;
             case (InputEvent::SELECT):
-                _cursor_state = CursorState::COMPONENT;
                 _components[_cursor_pos]->cmp->activate();
+                if (_components[_cursor_pos]->cmp->isActive()) {
+                    _cursor_state = CursorState::COMPONENT;
+                }
                 break;
         }
+
         _components[_cursor_pos]->cmp->setHover(true);
     } else {
         _components[_cursor_pos]->cmp->handleEvent(event);
         if (!_components[_cursor_pos]->cmp->isActive()) {
             _cursor_state = CursorState::WINDOW;
-            _cursor_pos = 0;
         }
     }
 }
@@ -145,6 +151,10 @@ WindowManager::~WindowManager() {
 }
 
 void WindowManager::update() {
+    if (_next_window != -1 && _active_window != _next_window) {
+        _active_window = _next_window;
+        _graphics.fill({{0,0},{_width,_height}}, {0,0,0});
+    }
     if (_active_window == -1) {
         // TODO log that no window in focus
         return;
@@ -156,14 +166,17 @@ void WindowManager::update() {
 Window* WindowManager::add() {
     _windows.push_back(Window{this, _width, _height});
     const uint current_idx = _windows.size() - 1;
-    if (current_idx == 0)
+    if (current_idx == 0) {
         _active_window = current_idx;
+        _next_window = _active_window;
+    }
     return &_windows[current_idx];
 }
 
 bool WindowManager::makeActive(beer::uint id) {
     if (id < _windows.size()) {
-        _active_window = id;
+        _next_window = id;
+        // _active_window = id;
         return true;
     }
     return false;

@@ -33,6 +33,7 @@ class WindowManager {
         void onEvent(InputEvent const& event);
 
         Graphics& getGraphics() const;
+        beer::uint getWidth() const {return _width;}
 
         /// Not to be called directly. Window can have components added to it, but doesn't directly own the component
         WindowedComponent* registerComponent(Window* win, WindowedComponent const& component);
@@ -42,7 +43,8 @@ class WindowManager {
         beer::List<Window> _windows;
         beer::uint _width; //TODO dimensions type
         beer::uint _height;
-        int _active_window;
+        int _active_window = -1;
+        int _next_window = -1;
 };
 
 #endif // WINDOWMANAGER_H_

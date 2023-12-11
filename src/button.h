@@ -5,10 +5,11 @@
 
 class ButtonComponent : public Component {
     public:
-        using ButtonFunc = void (*)(ButtonComponent* cmp);
-        ButtonComponent(Region const& region, ButtonFunc func);
+        using ButtonFunc = void (*)();
+        ButtonComponent(Point const& dimensions, ButtonFunc func);
         void handleEvent(InputEvent const& event_type) override;
         void draw(Graphics& graphics) override;
+        void activate() override;
     protected:
         ButtonFunc _action;
         bool _cursorable = true;

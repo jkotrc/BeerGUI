@@ -1,17 +1,19 @@
 #ifndef WINDOW_H_
 #define WINDOW_H_
 
-#include "core.h"
 #include "component.h"
+#include "core.h"
 #include "windowmanager.h"
 
 struct WindowedComponent {
   WindowedComponent() : position({0, 0}), cmp(nullptr) {}
-  // ~WindowedComponent() { delete cmp; } //TODO shared pointer would be useful here
+  // ~WindowedComponent() { delete cmp; } //TODO shared pointer would be useful
+  // here
   WindowedComponent(Point const &pos, Component *cmp)
       : position(pos), cmp(cmp) {}
-  WindowedComponent(WindowedComponent const& other) : position(other.position), cmp(other.cmp) {}
-  WindowedComponent& operator=(WindowedComponent const& other) {
+  WindowedComponent(WindowedComponent const &other)
+      : position(other.position), cmp(other.cmp) {}
+  WindowedComponent &operator=(WindowedComponent const &other) {
     position = other.position;
     cmp = other.cmp;
     return *this;
@@ -38,26 +40,25 @@ struct WindowedComponent {
  * outside its region, an error should be logged
  */
 class WindowGraphics : public Graphics {
-      public:
-        /**
-         * Set the intended region to be drawn in for subsequent
-         * draw function. All rendering methods will treat the top
-         * left corner of the region as the origin point, so
-         * `drawPixel({0,0},color)` will be at top-left corner.
-         */
-        void setRegion(Region const &region);
+public:
+  /**
+   * Set the intended region to be drawn in for subsequent
+   * draw function. All rendering methods will treat the top
+   * left corner of the region as the origin point, so
+   * `drawPixel({0,0},color)` will be at top-left corner.
+   */
+  void setRegion(Region const &region);
 
-        WindowGraphics(Graphics &g);
-        void drawPixel(Point const &point, Color const &color) override;
-        void fill(Region const &region, Color const &color) override;
-        void drawLine(Point const &from, Point const &to,
-                      Color const &color) override;
-        void update() override;
-        void drawText(Point const &anchor, const char *text,
-                      Color const &color) override;
-      private:
-        Region _region;
-        Graphics &_graphics;
+  WindowGraphics(Graphics &g);
+  void drawPixel(Point const &point, Color const &color) override;
+  void fill(Region const &region, Color const &color) override;
+  void drawLine(Point const &from, Point const &to, Color const &color) override;
+  void update() override;
+  void drawText(Point const &anchor, const char *text, Color const &color) override;
+
+private:
+  Region _region;
+  Graphics &_graphics;
 };
 
 /**
@@ -65,33 +66,36 @@ class WindowGraphics : public Graphics {
  * to be created directly, essentially a part of WindowManager so far.
  */
 class Window {
-    public:
-        ~Window();
-        Window();
-        // Window(Window const& other);
-        Window(Window&& other);
-        Window& operator=(Window&& other);
-        Window(WindowManager* parent, beer::uint width, beer::uint height);
-        // Window(Window const& win);
-        /// Add component to window, with anchor point relative to window's top left corner
-        bool addComponent(WindowedComponent const& component); //TODO rvalue??
-        /// Draw all components in this window
-        void draw();
-        /// Calling this propagates the event to children, changing state
-        void onEvent(InputEvent const& event);
-        void setParent(WindowManager* parent);
-        beer::uint getWidth() const;
-        beer::uint getHeight() const;
-    private:
-      // friend class WindowManager;
-      enum class CursorState {WINDOW,COMPONENT};
-      WindowManager *_parent = nullptr;
-      beer::List<WindowedComponent*> _components; // TODO support multiple components
-      beer::uint _cursor_pos = 0;
-      CursorState _cursor_state = CursorState::WINDOW;
-      Region _region;
-      WindowGraphics *_graphics = nullptr;
-      int _index = -1;
+public:
+  ~Window();
+  Window();
+  // Window(Window const& other);
+  Window(Window &&other);
+  Window &operator=(Window &&other);
+  Window(WindowManager *parent, beer::uint width, beer::uint height);
+  // Window(Window const& win);
+  /// Add component to window, with anchor point relative to window's top left
+  /// corner
+  bool addComponent(WindowedComponent const &component); // TODO rvalue??
+  /// Draw all components in this window
+  void draw();
+  /// Calling this propagates the event to children, changing state
+  void onEvent(InputEvent const &event);
+  void setParent(WindowManager *parent);
+  beer::uint getWidth() const;
+  beer::uint getHeight() const;
+
+private:
+  // friend class WindowManager;
+  enum class CursorState { WINDOW, COMPONENT };
+  WindowManager *_parent = nullptr;
+  beer::List<WindowedComponent *>
+      _components; // TODO support multiple components
+  beer::uint _cursor_pos = 0;
+  CursorState _cursor_state = CursorState::WINDOW;
+  Region _region;
+  WindowGraphics *_graphics = nullptr;
+  int _index = -1;
 };
 
 #endif // WINDOW_H_

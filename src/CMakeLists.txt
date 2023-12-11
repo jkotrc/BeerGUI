@@ -4,7 +4,7 @@ set(DISPLAYLIB_SOURCES
   window.cpp
   component.cpp
   slider.cpp
-  #button.cpp
+  button.cpp
 )
 
 set(DISPLAYLIB_HEADERS

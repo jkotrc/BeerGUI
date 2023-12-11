@@ -14,5 +14,6 @@
 #include "component.h"
 
 #include "slider.h"
+#include "button.h"
 
 #endif // BEERGUI_H_

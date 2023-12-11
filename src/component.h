@@ -30,7 +30,7 @@ class Component {
         /// Set hover state. Ensure `draw` makes component look different when selected with cursor
         void setHover(bool hover);
         /// Called when component selected. Gives control over inputs
-        void activate();
+        virtual void activate();
 
         /// Whether the component is hidden
         bool isVisible() const;
