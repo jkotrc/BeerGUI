@@ -1,9 +1,12 @@
 #ifndef CORE_H_
 #define CORE_H_
 
-#ifndef BEER_ARDUINO
-#include <cstring>
-// #include <cstdint>
+#ifndef BEER_LINUX
+  #include <Arduino.h>
+#else
+  #include <cstring>
+  #include <cstdint>
+  #include <iostream>
 #endif
 
 namespace beer {
@@ -11,11 +14,12 @@ using uint = unsigned int;
 
 template <typename T> class List {
 public:
-  List(beer::uint size) {
+  List(beer::uint size=3) {
     _buf = new T[size];
     _capacity = size;
     _size = 0;
   }
+  ~List() { delete[] _buf; }
   List(List const &other) {
     _capacity = 2*other._size;
     _size = other._size;
@@ -27,8 +31,6 @@ public:
     _capacity = other._capacity;
     _size = other._size;
   }
-  List() : List(10) {}
-  ~List() { delete[] _buf; }
   void push_back(T&& value) {
     if (_size < _capacity) {
       _buf[_size] = static_cast<T&&>(value);
@@ -40,6 +42,7 @@ public:
       _buf = newbuf;
       _buf[_size] = static_cast<T&&>(value);
       _size++;
+      _capacity = _size * 2;
     }
   }
   void push_back(T const &value) {
@@ -53,9 +56,12 @@ public:
       _buf = newbuf;
       _buf[_size] = value;
       _size++;
+      _capacity = _size * 2;
     }
   }
-  T &operator[](size_t index) { return _buf[index]; }
+  T& operator[](beer::uint index) {
+    return _buf[index];
+  }
   beer::uint size() const { return _size; }
 
 private:
@@ -101,6 +107,9 @@ struct Point {
     x += other.x;
     y += other.y;
     return *this;
+  }
+  bool operator==(Point const& other) const {
+    return x == other.x && y == other.y;
   }
   beer::uint x;
   beer::uint y;

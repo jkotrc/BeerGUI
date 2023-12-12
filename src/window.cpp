@@ -1,7 +1,9 @@
 #include "core.h"
 #include "window.h"
-#include <iostream>
 
+#ifndef BEER_LINUX
+    #include <Arduino.h>
+#endif
 using namespace beer;
 
 #define MAX_COMPONENTS 10
@@ -44,9 +46,7 @@ Window::~Window() {
 
 }
 
-Window::Window() : _components() {
-
-}
+Window::Window() : _components(1) {}
 
 Window::Window(Window&& other)
 : _parent(other._parent),
@@ -67,12 +67,21 @@ Window& Window::operator=(Window&& other) {
 
 Window::Window(WindowManager* parent, beer::uint width, beer::uint height)
     : _parent(parent), _region({{0,0},{width,height}}) {
-    _graphics = new WindowGraphics(_parent->getGraphics());
+    _graphics = parent == nullptr ? nullptr
+        : new WindowGraphics(_parent->getGraphics());
 }
 
-bool Window::addComponent(WindowedComponent const& component) {
+bool Window::addComponent(WindowedComponent&& component) {
     if (_parent == nullptr || component.cmp == nullptr) return false;
-    _components.push_back(_parent->registerComponent(this, component));
+    WindowedComponent* comp = _parent->registerComponent(this, static_cast<WindowedComponent&&>(component));
+    for (uint i = 0; i < _components.size(); i++) {
+        //std::cout << "before[" << i << "] = " << _components[i]->position.x << ", " << _components[i]->position.y << std::endl;
+    }
+    //std::cout << "Recevied: " << comp->position.x << ", " << comp->position.y << "\n";
+    _components.push_back(comp);
+    for (uint i = 0; i < _components.size(); i++) {
+        //std::cout << "CoMP[" << i << "] = " << _components[i]->position.x << ", " << _components[i]->position.y << std::endl;
+    }
     if (_components.size() == 1) {
         _components[0]->cmp->setHover(true);
     }
@@ -81,8 +90,7 @@ bool Window::addComponent(WindowedComponent const& component) {
 }
 
 void Window::draw() {
-    if (_graphics == nullptr) return;
-
+    if (_graphics == nullptr || _parent == nullptr) return;
     for (uint i = 0; i < _components.size(); i++) {
         if (_components[i]->cmp->isVisible()) {
             Region offset_region = _components[i]->cmp->getRegion();
@@ -94,8 +102,8 @@ void Window::draw() {
     }
 }
 
-//TODO cursorable
 void Window::onEvent(InputEvent const& event) {
+    if (_parent == nullptr) return;
     if (_cursor_state == CursorState::WINDOW) {
         _components[_cursor_pos]->cmp->setHover(false);
         switch(event) {
@@ -142,18 +150,15 @@ beer::uint Window::getHeight() const {
 }
 
 WindowManager::WindowManager(Graphics& g, beer::uint width, beer::uint height)
-    : _windows(), _components(), _graphics(g), _active_window(-1), _width(width),_height(height) {
-
+    : _windows(), _components(5), _graphics(g), _active_window(-1), _width(width),_height(height) {
 }
 
-WindowManager::~WindowManager() {
-
-}
+WindowManager::~WindowManager() {}
 
 void WindowManager::update() {
     if (_next_window != -1 && _active_window != _next_window) {
         _active_window = _next_window;
-        _graphics.fill({{0,0},{_width,_height}}, {0,0,0});
+        _graphics.fill({{0,0},{_width-1,_height-1}}, {0,0,0});
     }
     if (_active_window == -1) {
         // TODO log that no window in focus
@@ -170,7 +175,9 @@ Window* WindowManager::add() {
         _active_window = current_idx;
         _next_window = _active_window;
     }
-    return &_windows[current_idx];
+    Window* ret = &_windows[current_idx];
+    //std::cout << "added: " << ret->getHeight() << std::endl;
+    return ret;
 }
 
 bool WindowManager::makeActive(beer::uint id) {
@@ -191,6 +198,12 @@ Graphics& WindowManager::getGraphics() const {
 }
 
 WindowedComponent* WindowManager::registerComponent(Window* win, WindowedComponent const& component) {
+    //std::cout << "registering component: " << component.position.x << ", " << component.position.y << std::endl;
     _components.push_back(component);
-    return &_components[_components.size()-1];
+    WindowedComponent* ret = &_components[_components.size()-1];
+    for (int i = 0; i < _components.size(); i++) {
+        WindowedComponent* cmp = &_components[i];
+        //std::cout << "WM Component:: " << cmp->position.x << ", " << cmp->position.y << std::endl;
+    }
+    return ret;
 }

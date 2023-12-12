@@ -2,7 +2,7 @@
 
 using namespace beer;
 
-ButtonComponent::ButtonComponent(Point const &dimensions, ButtonFunc action) : _action(action) {
+ButtonComponent::ButtonComponent(Point const &dimensions, Action action) : _action(action) {
     _region = {{0,0}, {dimensions.x,dimensions.y}};
 }
 

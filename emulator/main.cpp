@@ -1,3 +1,4 @@
+#define BEER_LINUX
 #include <cstdint>
 #include <iostream>
 #include <memory>
@@ -38,21 +39,23 @@ void setup() {
     windows[W_MAINMENU] = manager.add();
     windows[W_SETTINGS] = manager.add();
 
-    ButtonComponent::ButtonFunc onClick1 = []() { //define button action
+    ButtonComponent::Action onClick1 = []() { //define button action
         std::cout << "Going to settings\n";
          manager.makeActive(W_SETTINGS); //switch between windows
     };
-    ButtonComponent::ButtonFunc onClick2 = []() {
+    ButtonComponent::Action onClick2 = []() {
         std::cout << "Going to main menu\n";
          manager.makeActive(W_MAINMENU);
     };
 
-    windows[W_MAINMENU]->addComponent({{30,10}, new SliderComponent({50, 5}, 30)});
-    windows[W_MAINMENU]->addComponent({{30,30}, new ButtonComponent({10, 10}, onClick1)});
+    windows[W_MAINMENU]->addComponent({{0,10}, new SliderComponent({50, 5}, 30)});
+    windows[W_MAINMENU]->addComponent({{0,30}, new ButtonComponent({10, 10}, onClick1)});
+
     windows[W_SETTINGS]->addComponent({{30,10}, new SliderComponent({50, 5}, 60)});
     windows[W_SETTINGS]->addComponent({{30,20}, new SliderComponent({50, 5}, 255/2)});
     windows[W_SETTINGS]->addComponent({{30,30}, new ButtonComponent({10, 10}, onClick2)});
 
+    manager.makeActive(W_MAINMENU); //switch between windows
     // manager.makeActive(W_SETTINGS);
     // manager.addComponent(windows[W_SETTINGS], {{WIDTH/2,HEIGHT/2}, new ButtonComponent("Back", manager.transition(W_MAINMENU))});
 }

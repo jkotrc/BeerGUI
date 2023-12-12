@@ -1,8 +1,10 @@
-#define BEER_ARDUINO
 
 #include <SPI.h>
 #include <Wire.h>
+#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+#define BEER_ARDUINO
 #include <BeerGUI.h> //Use angle brackets <BeerGUI.h> in arduino
 
 using namespace beer;
@@ -13,41 +15,69 @@ using namespace beer;
 #define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-Renderer<Adafruit_GFX> ren(&display);
-WindowManager manager(ren, SCREEN_WIDTH, SCREEN_HEIGHT);
-Window window(SCREEN_WIDTH, SCREEN_HEIGHT);
+enum Windows {
+    W_MAINMENU = 0,
+    W_SETTINGS,
+    W_NWINDOWS
+};
 
-SliderComponent slider({{5, 5}, {60, 8}}, (uint8_t)255/2);
-SliderComponent slider2({{5, 10}, {60, 13}}, (uint8_t)255/2);
+Renderer<Adafruit_GFX> ren(&display);
+Window* windows[W_NWINDOWS];
+WindowManager manager(ren, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 void setup() {
     Serial.begin(9600);
-    
+
+
+
 // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
     if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
         Serial.println(F("SSD1306 allocation failed"));
         for(;;); // Don't proceed, loop forever
     }
 
+
     // Show initial display buffer contents on the screen --
     // the library initializes this with an Adafruit splash screen.
     display.display();
     delay(2000); // Pause for 2 seconds
-
     display.clearDisplay();
-  
-    window.addComponent(&slider);
-    window.addComponent(&slider2);
-    manager.add(0, window);
 
-    /*
-     * Create two sliders and push them around. Use whatever method of reacting to user
-     * input, then call manager.onEvent. Changes won't be visible until manager.update() is called
-     */
-    test_program();
-    manager.onEvent(InputEvent::PLUS);
+    Serial.println("Let's go");
+
+    windows[W_MAINMENU] = manager.add();
+    windows[W_SETTINGS] = manager.add();
+
+    ButtonComponent::ButtonFunc onClick1 = []() { //define button action
+        Serial.println("Going to settings");
+         manager.makeActive(W_SETTINGS); //switch between windows
+    };
+    /* ButtonComponent::ButtonFunc onClick2 = []() { */
+    /*     Serial.println("Going to main menu"); */
+    /*      manager.makeActive(W_MAINMENU); */
+    /* }; */
+    windows[W_MAINMENU]->addComponent({{30,10}, new SliderComponent({50, 5}, 30)});
+    windows[W_MAINMENU]->addComponent({{30,30}, new ButtonComponent({10, 10}, onClick1)});
+
+    windows[W_SETTINGS]->addComponent({{30,10}, new SliderComponent({50, 5}, 60)});
+
+    /* windows[W_SETTINGS]->addComponent({{30,20}, new SliderComponent({50, 5}, 255/2)}); */
+    /* windows[W_SETTINGS]->addComponent({{80,30}, new ButtonComponent({10, 10}, onClick2)}); */
+
+    /* manager.update(); */
+    /* display.display(); */
+    /* Create two sliders and push them around. Use whatever method of reacting to user */
+    /* input, then call manager.onEvent. Changes won't be visible until manager.update() is called */
+    /* test_program(); */
+    /* manager.onEvent(InputEvent::PLUS); */
+    /* updateAll(); */
+    /* test_program(); */
+
+    manager.onEvent(InputEvent::SELECT); //enter slider component with select
     updateAll();
-    test_program();
+    /* manager.onEvent(InputEvent::PLUS); //enter slider component with select */
+    /* updateAll(); */
+    Serial.println("setup complete");
 }
 
 void test_program() {
@@ -65,13 +95,10 @@ void test_program() {
 void updateAll() {
     delay(50);
     manager.update();
-    ren.drawPixel({127, 63}, {1,1,1});
-    ren.drawText({70,30}, "yo", {1,1,1});
     display.display();
 }
 
 void loop() {
-    updateAll(); //infinitely cycle between components in window
-    manager.onEvent(InputEvent::PLUS);
     delay(500);
+    updateAll(); //infinitely cycle between components in window
 }

@@ -1,6 +1,8 @@
 #ifndef GLBACKEND_H_
 #define GLBACKEND_H_
 
+#define BEER_LINUX
+
 #include "core.h"
 #define GLEW_STATIC
 

@@ -13,7 +13,13 @@ struct WindowedComponent {
       : position(pos), cmp(cmp) {}
   WindowedComponent(WindowedComponent const &other)
       : position(other.position), cmp(other.cmp) {}
+  WindowedComponent(WindowedComponent&& other) : position(other.position), cmp(other.cmp) {}
   WindowedComponent &operator=(WindowedComponent const &other) {
+    position = other.position;
+    cmp = other.cmp;
+    return *this;
+  }
+  WindowedComponent &operator=(WindowedComponent&&other) {
     position = other.position;
     cmp = other.cmp;
     return *this;
@@ -76,7 +82,7 @@ public:
   // Window(Window const& win);
   /// Add component to window, with anchor point relative to window's top left
   /// corner
-  bool addComponent(WindowedComponent const &component); // TODO rvalue??
+  bool addComponent(WindowedComponent&& component); // TODO rvalue??
   /// Draw all components in this window
   void draw();
   /// Calling this propagates the event to children, changing state
@@ -89,8 +95,7 @@ private:
   // friend class WindowManager;
   enum class CursorState { WINDOW, COMPONENT };
   WindowManager *_parent = nullptr;
-  beer::List<WindowedComponent *>
-      _components; // TODO support multiple components
+  beer::List<WindowedComponent *> _components; // TODO support multiple components
   beer::uint _cursor_pos = 0;
   CursorState _cursor_state = CursorState::WINDOW;
   Region _region;

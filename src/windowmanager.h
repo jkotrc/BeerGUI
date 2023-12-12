@@ -22,7 +22,7 @@ class WindowManager {
         void update();
         /// Create a new window and obtain handle to it
         Window* add();
-        //TODO
+        //TODO rename to createWindow()
         // template <typename Layout>
         // Window add(Layout const& layout);
 

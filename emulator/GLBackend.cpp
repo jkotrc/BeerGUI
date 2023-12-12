@@ -1,8 +1,10 @@
+#define BEER_LINUX
 #include "GLBackend.h"
 #include "GLFW/glfw3.h"
 #include "core.h"
 
 #include <iostream>
+#include <cassert>
 #include <stdio.h>
 #include <string.h>
 
@@ -55,7 +57,7 @@ GLBackend::GLBackend(uint width, uint height)
 GLBackend::~GLBackend() {
   glfwDestroyWindow(_window);
   glfwTerminate();
-  delete _screen.buf;
+  delete[] _screen.buf;
 }
 
 bool GLBackend::init() {
@@ -229,7 +231,8 @@ void GLRenderer::drawText(Point const& anchor, const char* text, Color const& co
 template <> void GLRenderer::fill(Region const &region, Color const &color) {
     for (uint i = region.top_left.x; i < region.bottom_right.x; i++) {
       for (uint j = region.top_left.y; j < region.bottom_right.y; j++) {
-          *_backend->_screen.at({i, _backend->_dims.y-j}) = getPixelColor(color);
+        assert((_backend->_dims.y-1-j)*128+i-1 < 128*64);
+          *_backend->_screen.at({i, _backend->_dims.y-1-j}) = getPixelColor(color);
       }
     }
 }
