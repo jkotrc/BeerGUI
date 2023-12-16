@@ -1,4 +1,3 @@
-#define BEER_LINUX
 #include "GLBackend.h"
 #include "GLFW/glfw3.h"
 #include "core.h"
@@ -203,19 +202,6 @@ uint32_t getPixelColor(Color const& color) {
     return ret;
 }
 
-template <> void GLRenderer::setup() {
-  bool status;
-  try {
-    status = _backend->init();
-  } catch (std::exception const &e) {
-    status = false;
-    std::cerr << "Error during backend init: " << e.what() << std::endl;
-  }
-  if (!status) {
-    std::cerr << "Backend init returned false!\n";
-  }
-}
-
 template <>
 void GLRenderer::drawPixel(Point const &point, Color const &color) {
     if(point.x <=_backend->_dims.x && point.y <= _backend->_dims.y) {
@@ -245,7 +231,9 @@ template <> void GLRenderer::update() {
   _backend->update();
 }
 
-template <> void GLRenderer::clear() {}
+template <> void GLRenderer::clear() {
+  this->fill({{0,0}, {this->_backend->_dims.x-1,this->_backend->_dims.y-1}}, {0,0,0});
+}
 
 GLuint compileShader(std::string vertexSource, std::string fragmentSource) {
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);

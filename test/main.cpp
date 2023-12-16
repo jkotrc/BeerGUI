@@ -12,7 +12,7 @@ using namespace beer;
 TEST(BeerTest, BasicCreation) {
   FRenderer ren;
   WindowManager manager(ren, 100, 50);
-  Window* win = manager.add();
+  Window* win = manager.createWindow();
   EXPECT_EQ(win->getWidth(), 100);
   EXPECT_EQ(win->getHeight(), 50);
   win->addComponent({{0,0}, new SliderComponent({20,5}, 0)});

@@ -1,11 +1,14 @@
 #ifndef CORE_H_
 #define CORE_H_
 
+//TODO make a logger interface to stdout or serial
+//
 #ifndef BEER_LINUX
   #include <Arduino.h>
 #else
-  #include <cstring>
+  #include <cassert>
   #include <cstdint>
+  #include <cstring>
   #include <iostream>
 #endif
 
@@ -14,33 +17,50 @@ using uint = unsigned int;
 
 template <typename T> class List {
 public:
-  List(beer::uint size=3) {
+  List(beer::uint size = 2) {
     _buf = new T[size];
     _capacity = size;
     _size = 0;
   }
   ~List() { delete[] _buf; }
   List(List const &other) {
-    _capacity = 2*other._size;
+    _capacity = other._size;
     _size = other._size;
     _buf = new T[_capacity];
-    memcpy(_buf, other._buf, _size*sizeof(T));
+    memcpy(_buf, other._buf, _size * sizeof(T));
   }
-  List(List&& other) {
+  List(List &&other) {
     _buf = other._buf;
     _capacity = other._capacity;
     _size = other._size;
+    delete[] other._buf;
+    other._size = 0;
+    other._capacity = 0;
+    other._buf = nullptr;
   }
-  void push_back(T&& value) {
+  List &operator=(List const &other) {
+    _capacity = other._size;
+    _size = other._size;
+    _buf = new T[_capacity];
+    memcpy(_buf, other._buf, _size * sizeof(T));
+    return *this;
+  }
+  List &operator=(List &&other) {
+    _buf = other._buf;
+    _capacity = other._capacity;
+    _size = other._size;
+    return *this;
+  }
+  void push_back(T &&value) {
     if (_size < _capacity) {
-      _buf[_size] = static_cast<T&&>(value);
+      _buf[_size] = static_cast<T &&>(value);
       _size++;
     } else {
       T *newbuf = new T[_size * 2];
       memcpy(newbuf, _buf, _size * sizeof(T));
       delete[] _buf;
       _buf = newbuf;
-      _buf[_size] = static_cast<T&&>(value);
+      _buf[_size] = static_cast<T &&>(value);
       _size++;
       _capacity = _size * 2;
     }
@@ -50,18 +70,16 @@ public:
       _buf[_size] = value;
       _size++;
     } else {
-      T *newbuf = new T[_size * 2];
+      _capacity = _size * 2;
+      T *newbuf = new T[_capacity];
       memcpy(newbuf, _buf, _size * sizeof(T));
       delete[] _buf;
       _buf = newbuf;
       _buf[_size] = value;
       _size++;
-      _capacity = _size * 2;
     }
   }
-  T& operator[](beer::uint index) {
-    return _buf[index];
-  }
+  T &operator[](beer::uint index) { return _buf[index]; }
   beer::uint size() const { return _size; }
 
 private:
@@ -91,24 +109,20 @@ struct Color {
 /// Point on the screen with (0,0) at top left and +y down.
 struct Point {
   Point(beer::uint x, beer::uint y) : x(x), y(y) {}
-  Point(Point const& other) : x(other.x), y(other.y) {}
-  Point& operator=(Point const& other) {
+  Point(Point const &other) : x(other.x), y(other.y) {}
+  Point &operator=(Point const &other) {
     x = other.x;
     y = other.y;
     return *this;
   }
-  Point operator+(Point const& other) {
-    return {x+other.x, y+other.y};
-  }
-  Point operator-(Point const& other) {
-    return {x-other.x, y-other.y};
-  }
-  Point& operator+=(Point const& other) {
+  Point operator+(Point const &other) { return {x + other.x, y + other.y}; }
+  Point operator-(Point const &other) { return {x - other.x, y - other.y}; }
+  Point &operator+=(Point const &other) {
     x += other.x;
     y += other.y;
     return *this;
   }
-  bool operator==(Point const& other) const {
+  bool operator==(Point const &other) const {
     return x == other.x && y == other.y;
   }
   beer::uint x;
@@ -126,12 +140,12 @@ using ScreenDim = Point;
 struct Region {
   Region() : top_left({0, 0}), bottom_right({0, 0}) {}
   Region(Point const &tl, Point const &br) : top_left(tl), bottom_right(br) {}
-  Region operator+(Region const& other) {
-    return {top_left+other.top_left, bottom_right+other.bottom_right};
+  Region operator+(Region const &other) {
+    return {top_left + other.top_left, bottom_right + other.bottom_right};
   }
-  //TODO this can overflow!
-  Region operator-(Region const& other) {
-    return {top_left-other.top_left, bottom_right-other.bottom_right};
+  // TODO this can overflow!
+  Region operator-(Region const &other) {
+    return {top_left - other.top_left, bottom_right - other.bottom_right};
   }
   Point top_left;
   Point bottom_right;

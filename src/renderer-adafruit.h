@@ -18,11 +18,6 @@ void GFXRenderer::clear() {
 }
 
 template<>
-void GFXRenderer::setup() {
-
-}
-
-template<>
 void GFXRenderer::update() {
 
 }

@@ -15,15 +15,13 @@ SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/dist)
 
 if (BEER_BUILD_EMULATOR)
     add_compile_definitions(BEER_LINUX)
+    add_definitions(-g -O0 -std=c++17 -Wall -Wextra)
 endif()
 
 #add_subdirectory(fontgen)
 add_subdirectory(src)
 
 if (BEER_BUILD_EMULATOR)
-    #add_definitions(-g -O2 -std=c++17 -Wall -Wextra)
-    add_definitions(-g -O0 -std=c++17 -Wall -Wextra)
-    #add_subdirectory(${PROJECT_SOURCE_DIR}/libs/glfw)
     add_subdirectory(emulator)
 else()
     set(DISPLAY_SOURCES

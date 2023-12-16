@@ -1,4 +1,3 @@
-#define BEER_LINUX
 #include <cstdint>
 #include <iostream>
 #include <memory>
@@ -19,85 +18,82 @@
  *
  */
 
-//START of Arduino
+// START of Arduino
 
 #include "BeerGUI.h" //Use angle brackets <BeerGUI.h> in arduino
 using namespace beer;
 
-enum Windows {
-    W_MAINMENU = 0,
-    W_SETTINGS,
-    W_NWINDOWS
-};
+enum Windows { W_MAINMENU = 0, W_SETTINGS = 1, W_NWINDOWS = 2 };
 
 GLBackend backend(WIDTH, HEIGHT);
 Renderer<GLBackend> ren(&backend);
 WindowManager manager(ren, WIDTH, HEIGHT);
-Window* windows[W_NWINDOWS];
+Window *windows[W_NWINDOWS];
 
 void setup() {
-    windows[W_MAINMENU] = manager.add();
-    windows[W_SETTINGS] = manager.add();
+  windows[W_MAINMENU] = manager.createWindow();
+  windows[W_SETTINGS] = manager.createWindow();
 
-    ButtonComponent::Action onClick1 = []() { //define button action
-        std::cout << "Going to settings\n";
-         manager.makeActive(W_SETTINGS); //switch between windows
-    };
-    ButtonComponent::Action onClick2 = []() {
-        std::cout << "Going to main menu\n";
-         manager.makeActive(W_MAINMENU);
-    };
+  ButtonComponent::Action onClick1 = []() { // define button action
+    std::cout << "Going to settings\n";
+    manager.makeActive(W_SETTINGS); // switch between windows
+  };
+  ButtonComponent::Action onClick2 = []() {
+    std::cout << "Going to main menu\n";
+    manager.makeActive(W_MAINMENU);
+  };
 
-    windows[W_MAINMENU]->addComponent({{0,10}, new SliderComponent({50, 5}, 30)});
-    windows[W_MAINMENU]->addComponent({{0,30}, new ButtonComponent({10, 10}, onClick1)});
+  windows[W_MAINMENU]->addComponent(
+      {{10, 10}, new SliderComponent({50, 5}, 30)});
+  windows[W_MAINMENU]->addComponent(
+      {{80, 30}, new ButtonComponent({10, 10}, onClick1)});
 
-    windows[W_SETTINGS]->addComponent({{30,10}, new SliderComponent({50, 5}, 60)});
-    windows[W_SETTINGS]->addComponent({{30,20}, new SliderComponent({50, 5}, 255/2)});
-    windows[W_SETTINGS]->addComponent({{30,30}, new ButtonComponent({10, 10}, onClick2)});
+  windows[W_SETTINGS]->addComponent(
+      {{30, 10}, new SliderComponent({50, 5}, 60)});
+  windows[W_SETTINGS]->addComponent(
+      {{30, 20}, new SliderComponent({50, 5}, 255 / 2)});
+  windows[W_SETTINGS]->addComponent(
+      {{30, 30}, new ButtonComponent({10, 10}, onClick2)});
 
-    manager.makeActive(W_MAINMENU); //switch between windows
-    // manager.makeActive(W_SETTINGS);
-    // manager.addComponent(windows[W_SETTINGS], {{WIDTH/2,HEIGHT/2}, new ButtonComponent("Back", manager.transition(W_MAINMENU))});
+  manager.makeActive(W_MAINMENU); // switch between windows
+  // manager.makeActive(W_SETTINGS);
+  // manager.addComponent(windows[W_SETTINGS], {{WIDTH/2,HEIGHT/2}, new
+  // ButtonComponent("Back", manager.transition(W_MAINMENU))});
 }
 
-void loop() {
-    manager.update();
-}
+void loop() { manager.update(); }
 
-//END of arduino
+// END of arduino
 
 bool running;
 
-void finish(int sig) {
-    running = false;
-}
+void finish(int sig) { running = false; }
 
 int main(int argc, char *argv[]) {
-    running = true;
-    signal(SIGINT, finish);
+  running = true;
+  signal(SIGINT, finish);
 
-    setup();
+  setup();
 
-    while (running) {
-        //void loop()
-        loop();
-        std::vector<InputEvent> events = backend.clearEvents();
-        for (InputEvent const& event : events) {
-            switch(event) {
-                case(InputEvent::MINUS):
-                    std::cout << "INPUT: -\n";
-                    break;
-                case(InputEvent::PLUS):
-                    std::cout << "INPUT: +\n";
-                    break;
-                case(InputEvent::SELECT):
-                    std::cout << "INPUT: select\n";
-                    break;
-
-            }
-            manager.onEvent(event);
-        }
+  while (running) {
+    // void loop()
+    loop();
+    std::vector<InputEvent> events = backend.clearEvents();
+    for (InputEvent const &event : events) {
+      switch (event) {
+      case (InputEvent::MINUS):
+        std::cout << "INPUT: -\n";
+        break;
+      case (InputEvent::PLUS):
+        std::cout << "INPUT: +\n";
+        break;
+      case (InputEvent::SELECT):
+        std::cout << "INPUT: select\n";
+        break;
+      }
+      manager.onEvent(event);
     }
+  }
 
-    return 0;
+  return 0;
 }

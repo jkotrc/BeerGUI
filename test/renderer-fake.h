@@ -15,9 +15,6 @@ template<>
 void FRenderer::clear() {}
 
 template<>
-void FRenderer::setup() {}
-
-template<>
 void FRenderer::update() {}
 
 template<>
