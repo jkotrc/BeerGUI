@@ -59,6 +59,14 @@ private:
   Graphics &_graphics;
 };
 
+enum class CursorState { WINDOW, COMPONENT };
+
+
+struct WindowState {
+  beer::uint cursor_pos;
+  CursorState cursor_state;
+};
+
 /**
  * The state of a window inside the WindowManager. Not
  * to be created directly. Once you create a WindowManager with a given
@@ -71,26 +79,26 @@ public:
   // Window(Window const& other);
   Window(Window &&other);
   Window &operator=(Window &&other);
-  Window(WindowManager *parent, beer::uint width, beer::uint height);
+  Window(WindowManagerBase *parent, beer::uint width, beer::uint height);
   // Window(Window const& win);
   /// Add component to window, with anchor point relative to window's top left corner
-  bool addComponent(WindowedComponent const &component);
+  // bool addComponent(WindowedComponent const &component);
   /// Draw all components in this window
   void draw();
   /// Calling this propagates the event to children, changing state
   void onEvent(InputEvent const &event);
-  void setParent(WindowManager *parent);
+  void setParent(WindowManagerBase *parent);
   beer::uint getWidth() const;
   beer::uint getHeight() const;
+    void registerComp(beer::uint index) { _components.push_back(index); }
 
 private:
   WindowedComponent *getComponent(beer::uint idx);
-  enum class CursorState { WINDOW, COMPONENT };
-  WindowManager *_parent = nullptr;
-  beer::List<beer::uint> _components;
+  WindowManagerBase *_parent = nullptr;
+  beer::Vector<beer::uint> _components;
   beer::uint _cursor_pos = 0;
   CursorState _cursor_state = CursorState::WINDOW;
-  Region _region;
+  Region _region; //can be stored even with static mode
   WindowGraphics *_graphics = nullptr;
   int _index = -1;
 };

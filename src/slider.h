@@ -10,7 +10,6 @@ public:
   void draw(Graphics &graphics) override;
 
 protected:
-  Point _dimensions;
   beer::uint _progress;
   bool _cursorable = true;
 };

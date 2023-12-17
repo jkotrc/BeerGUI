@@ -17,74 +17,89 @@ using uint = unsigned int;
 
 template <typename T> class List {
 public:
-  List(beer::uint size = 2) {
-    _buf = new T[size];
+  List() : _buf(nullptr), _size(0) {}
+  List(T *buf, uint size) : _buf(buf), _size(size) {}
+  virtual ~List() = default;
+
+  // T& operator[](uint index) { return _buf[index]; }
+  T &operator[](uint index) const { return _buf[index]; }
+  uint size() const { return _size; }
+
+protected:
+  T *_buf = nullptr;
+  uint _size = 0;
+};
+
+template <typename T> class Vector : public List<T> {
+public:
+  Vector(beer::uint size = 2) : List<T>(new T[size], size) {
+    // _buf = new T[size];
     _capacity = size;
-    _size = 0;
+    this->_size = 0;
   }
-  ~List() { delete[] _buf; }
-  List(List const &other) {
+  ~Vector() { delete[] this->_buf; }
+  Vector(Vector const &other) {
     _capacity = other._size;
-    _size = other._size;
-    _buf = new T[_capacity];
-    memcpy(_buf, other._buf, _size * sizeof(T));
+    this->_size = other._size;
+    this->_buf = new T[_capacity];
+    memcpy(this->_buf, other._buf, this->_size * sizeof(T));
   }
-  List(List &&other) {
-    _buf = other._buf;
+  Vector(Vector &&other) {
+    this->_buf = other._buf;
     _capacity = other._capacity;
-    _size = other._size;
+    this->_size = other._size;
     delete[] other._buf;
     other._size = 0;
     other._capacity = 0;
     other._buf = nullptr;
   }
-  List &operator=(List const &other) {
+  Vector &operator=(Vector const &other) {
     _capacity = other._size;
-    _size = other._size;
-    _buf = new T[_capacity];
-    memcpy(_buf, other._buf, _size * sizeof(T));
+    this->_size = other._size;
+    this->_buf = new T[_capacity];
+    memcpy(this->_buf, other._buf, this->_size * sizeof(T));
     return *this;
   }
-  List &operator=(List &&other) {
-    _buf = other._buf;
+  Vector &operator=(Vector &&other) {
+    this->_buf = other._buf;
     _capacity = other._capacity;
-    _size = other._size;
+    this->_size = other._size;
     return *this;
   }
   void push_back(T &&value) {
-    if (_size < _capacity) {
-      _buf[_size] = static_cast<T &&>(value);
-      _size++;
+    // assert(_capacity != 0);
+    if (this->_size < _capacity) {
+      this->_buf[this->_size] = static_cast<T &&>(value);
+      this->_size++;
     } else {
-      T *newbuf = new T[_size * 2];
-      memcpy(newbuf, _buf, _size * sizeof(T));
-      delete[] _buf;
-      _buf = newbuf;
-      _buf[_size] = static_cast<T &&>(value);
-      _size++;
-      _capacity = _size * 2;
+      _capacity = this->_size * 2;
+      T *newbuf = new T[_capacity];
+      memcpy(newbuf, this->_buf, this->_size * sizeof(T));
+      delete[] this->_buf;
+      this->_buf = newbuf;
+      this->_buf[this->_size] = static_cast<T &&>(value);
+      this->_size++;
     }
   }
   void push_back(T const &value) {
-    if (_size < _capacity) {
-      _buf[_size] = value;
-      _size++;
+    // assert(_capacity != 0);
+    if (this->_size < _capacity) {
+      this->_buf[this->_size] = value;
+      this->_size++;
     } else {
-      _capacity = _size * 2;
+      _capacity = this->_size * 2;
       T *newbuf = new T[_capacity];
-      memcpy(newbuf, _buf, _size * sizeof(T));
-      delete[] _buf;
-      _buf = newbuf;
-      _buf[_size] = value;
-      _size++;
+      memcpy(newbuf, this->_buf, this->_size * sizeof(T));
+      delete[] this->_buf;
+      this->_buf = newbuf;
+      this->_buf[this->_size] = value;
+      this->_size++;
     }
   }
-  T &operator[](beer::uint index) { return _buf[index]; }
-  beer::uint size() const { return _size; }
+  // T &operator[](beer::uint index) { return _buf[index]; }
+  // beer::uint size() const { return _size; }
 
 private:
-  T *_buf = nullptr;
-  beer::uint _size = 0;
   beer::uint _capacity = 0;
 };
 } // namespace beer
@@ -130,7 +145,11 @@ struct Point {
 };
 
 /// "x" width and "y" height
-using ScreenDim = Point;
+// using ScreenDim = Point;
+struct ScreenDim {
+  beer::uint width;
+  beer::uint height;
+};
 
 /**
  * A portion of the screen defined by top left

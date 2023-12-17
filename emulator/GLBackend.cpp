@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
-using namespace beer;
+using beer::uint;
 
 GLuint compileShader(std::string vertexSource, std::string fragmentSource);
 
@@ -140,8 +140,8 @@ bool GLBackend::init() {
   glTexImage2D(GL_TEXTURE_2D,
                0,
                GL_RGBA,
-               _dims.x,
-               _dims.y,
+               _dims.width,
+               _dims.height,
                0,
                GL_RGBA,GL_UNSIGNED_INT_8_8_8_8,
                _screen.buf);
@@ -161,8 +161,8 @@ void GLBackend::update() {
   glTexImage2D(GL_TEXTURE_2D,
                0,
                GL_RGBA,
-               _dims.x,
-               _dims.y,
+               _dims.width,
+               _dims.height,
                0,
                GL_RGBA,GL_UNSIGNED_INT_8_8_8_8,
                _screen.buf);
@@ -204,7 +204,7 @@ uint32_t getPixelColor(Color const& color) {
 
 template <>
 void GLRenderer::drawPixel(Point const &point, Color const &color) {
-    if(point.x <=_backend->_dims.x && point.y <= _backend->_dims.y) {
+    if(point.x <=_backend->_dims.width && point.y <= _backend->_dims.height) {
         *_backend->_screen.at(point) = getPixelColor(color);
     }
 }
@@ -217,8 +217,8 @@ void GLRenderer::drawText(Point const& anchor, const char* text, Color const& co
 template <> void GLRenderer::fill(Region const &region, Color const &color) {
     for (uint i = region.top_left.x; i < region.bottom_right.x; i++) {
       for (uint j = region.top_left.y; j < region.bottom_right.y; j++) {
-        assert((_backend->_dims.y-1-j)*128+i-1 < 128*64);
-          *_backend->_screen.at({i, _backend->_dims.y-1-j}) = getPixelColor(color);
+        assert((_backend->_dims.height-1-j)*128+i-1 < 128*64);
+          *_backend->_screen.at({i, _backend->_dims.height-1-j}) = getPixelColor(color);
       }
     }
 }
@@ -232,7 +232,7 @@ template <> void GLRenderer::update() {
 }
 
 template <> void GLRenderer::clear() {
-  this->fill({{0,0}, {this->_backend->_dims.x-1,this->_backend->_dims.y-1}}, {0,0,0});
+  this->fill({{0,0}, {this->_backend->_dims.width-1,this->_backend->_dims.height-1}}, {0,0,0});
 }
 
 GLuint compileShader(std::string vertexSource, std::string fragmentSource) {

@@ -1,11 +1,12 @@
 #include "window.h"
 #include "core.h"
+#include "windowmanager.h"
 
 #ifndef BEER_LINUX
   #include <Arduino.h>
 #endif
 
-using namespace beer;
+using beer::uint;
 
 WindowGraphics::WindowGraphics(Graphics &g) : _graphics(g) {}
 void WindowGraphics::setRegion(Region const &region) { _region = region; }
@@ -60,24 +61,12 @@ Window &Window::operator=(Window &&other) {
   return *this;
 }
 
-Window::Window(WindowManager *parent, beer::uint width, beer::uint height)
-    : _parent(parent), _region({{0, 0}, {width, height}}) {
+Window::Window(WindowManagerBase *parent, beer::uint width, beer::uint height)
+    : _parent(parent), _components(3), _region({{0, 0}, {width, height}}) {
   _graphics =
       parent == nullptr
           ? nullptr
           : new WindowGraphics(_parent->getGraphics()); // TODO memory leak here
-}
-
-bool Window::addComponent(WindowedComponent const &component) {
-  if (_parent == nullptr || component.cmp == nullptr)
-    return false;
-  uint comp = _parent->registerComponent(this, component);
-  _components.push_back(comp);
-  if (_components.size() == 1) {
-    getComponent(0)->cmp->setHover(true);
-  }
-
-  return true;
 }
 
 void Window::draw() {
@@ -132,7 +121,7 @@ void Window::onEvent(InputEvent const &event) {
   }
 }
 
-void Window::setParent(WindowManager *parent) { _parent = parent; }
+void Window::setParent(WindowManagerBase *parent) { _parent = parent; }
 
 beer::uint Window::getWidth() const {
   return _region.bottom_right.x - _region.top_left.x;
@@ -149,13 +138,15 @@ WindowedComponent *Window::getComponent(beer::uint idx) {
 
 // -------------- Window Manager -------------------------
 
-WindowManager::WindowManager(Graphics &g, beer::uint width, beer::uint height)
-    : _windows(3), _components(1), _graphics(g), _active_window(-1),
-      _width(width), _height(height) {}
+WindowManagerBase::WindowManagerBase(Graphics &g, ScreenDim const &dim,
+                                     beer::List<Window> const &windows,
+                                     beer::List<WindowedComponent> const &components)
+    : _graphics(g), _windows(windows), _components(components), _dim(dim),
+      _active_window(-1) {}
 
-WindowManager::~WindowManager() {}
+WindowManagerBase::~WindowManagerBase() {}
 
-void WindowManager::update() {
+void WindowManagerBase::update() {
   if (_next_window != -1 && _active_window != _next_window) {
     _active_window = _next_window;
     _graphics.clear();
@@ -168,8 +159,9 @@ void WindowManager::update() {
   _graphics.update();
 }
 
-Window *WindowManager::createWindow() {
-  _windows.push_back(Window{this, _width, _height});
+
+Window* DynamicWM::createWindow() {
+  v_windows.push_back(Window{this, _dim.width, _dim.height});
   const uint current_idx = _windows.size() - 1;
   if (current_idx == 0) {
     _active_window = current_idx;
@@ -179,7 +171,7 @@ Window *WindowManager::createWindow() {
   return ret;
 }
 
-bool WindowManager::makeActive(beer::uint id) {
+bool WindowManagerBase::makeActive(beer::uint id) {
   if (id < _windows.size()) {
     _next_window = id;
     return true;
@@ -187,20 +179,21 @@ bool WindowManager::makeActive(beer::uint id) {
   return false;
 }
 
-void WindowManager::onEvent(InputEvent const &event) {
+void WindowManagerBase::onEvent(InputEvent const &event) {
   _windows[_active_window].onEvent(event);
 }
 
-Graphics &WindowManager::getGraphics() const { return _graphics; }
+Graphics &WindowManagerBase::getGraphics() const { return _graphics; }
 
-beer::uint
-WindowManager::registerComponent(Window *win,
-                                 WindowedComponent const &component) {
-  _components.push_back(component);
-  return _components.size() - 1;
+bool DynamicWM::addComponent(uint index, WindowedComponent const &component) {
+  if (index >= _windows.size() || component.cmp == nullptr) return false;
+  v_components.push_back(component);
+  assert(v_components.size() == _components.size());
+  _windows[index].registerComp(_components.size() - 1);
+  return true;
 }
 
-WindowedComponent *WindowManager::componentAt(uint idx) {
+WindowedComponent *WindowManagerBase::componentAt(uint idx) {
   WindowedComponent *ret = nullptr;
   if (idx < _components.size()) {
     ret = &_components[idx];

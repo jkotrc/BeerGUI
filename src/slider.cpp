@@ -4,7 +4,7 @@ using namespace beer;
 
 SliderComponent::SliderComponent(Point const &dimensions,
                                  beer::uint initial_progress)
-    : _dimensions(dimensions), _progress((initial_progress)) {
+    : _progress((initial_progress)) {
   _region = {{0, 0}, {dimensions.x, dimensions.y}};
 }
 
