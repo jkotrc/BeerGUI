@@ -4,15 +4,14 @@ set(DISPLAYLIB_SOURCES
   window.cpp
   component.cpp
   slider.cpp
-  #button.cpp
-  windowmanager.cpp
+  button.cpp
 )
 
 set(DISPLAYLIB_HEADERS
   windowmanager.h
   window.h
   component.h
-  button.h
+  slider.h
   renderer.h
 )
 

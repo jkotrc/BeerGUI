@@ -8,8 +8,8 @@ bool pointInRegion(Region const &reg, Point const &point) {
 }
 bool regionsOverlap(Region const &reg1, Region const &reg2) { return true; }
 
-//TODO convert color construct to RGB565 format uesd in GFX
-// for now, just black or white.
-uint colorToInt565(Color const& color) {
-    return color.r == 0 && color.g == 0 && color.b == 0;
+// TODO convert color construct to RGB565 format uesd in GFX
+//  for now, just black for (0,0,0) or white for all other colors.
+uint colorToInt565(Color const &color) {
+  return !(color.r == 0 && color.g == 0 && color.b == 0);
 }

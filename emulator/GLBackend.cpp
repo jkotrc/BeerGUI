@@ -3,10 +3,11 @@
 #include "core.h"
 
 #include <iostream>
+#include <cassert>
 #include <stdio.h>
 #include <string.h>
 
-using namespace beer;
+using beer::uint;
 
 GLuint compileShader(std::string vertexSource, std::string fragmentSource);
 
@@ -37,7 +38,7 @@ void main() {
     vec4 texColor = texture(textureSampler, texCoord);
 
     // Output the sampled color as the final fragment color
-    fragColor = texColor;
+    fragColor = vec4(0,texColor.g,texColor.b,1);
 }
 )";
 
@@ -45,7 +46,7 @@ GLBackend::GLBackend(uint width, uint height)
     : _dims{width, height}, _window(nullptr) {
   uint32_t *buf = new uint32_t[width * height];
   for (uint i = 0; i < width*height; i++) {
-      buf[i] = 0xcccc00;
+      buf[i] = 0x111000; //TODO more adequate
   }
   _screen = {buf, width, height};
 
@@ -55,7 +56,7 @@ GLBackend::GLBackend(uint width, uint height)
 GLBackend::~GLBackend() {
   glfwDestroyWindow(_window);
   glfwTerminate();
-  delete _screen.buf;
+  delete[] _screen.buf;
 }
 
 bool GLBackend::init() {
@@ -123,7 +124,7 @@ bool GLBackend::init() {
       1.0f, 1.0f,
   };
 
-  glClearColor(0.4f, 0.8f, 0.3f, 0.5f);
+  glClearColor(0.0f, 0.1f, 0.0f, 1.0f);
 
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices,
@@ -139,8 +140,8 @@ bool GLBackend::init() {
   glTexImage2D(GL_TEXTURE_2D,
                0,
                GL_RGBA,
-               _dims.x,
-               _dims.y,
+               _dims.width,
+               _dims.height,
                0,
                GL_RGBA,GL_UNSIGNED_INT_8_8_8_8,
                _screen.buf);
@@ -160,8 +161,8 @@ void GLBackend::update() {
   glTexImage2D(GL_TEXTURE_2D,
                0,
                GL_RGBA,
-               _dims.x,
-               _dims.y,
+               _dims.width,
+               _dims.height,
                0,
                GL_RGBA,GL_UNSIGNED_INT_8_8_8_8,
                _screen.buf);
@@ -196,19 +197,6 @@ std::vector<InputEvent> GLBackend::clearEvents() {
 //     _backend = new GLBackend();
 // }
 
-template <> void GLRenderer::setup() {
-  bool status;
-  try {
-    status = _backend->init();
-  } catch (std::exception const &e) {
-    status = false;
-    std::cerr << "Error during backend init: " << e.what() << std::endl;
-  }
-  if (!status) {
-    std::cerr << "Backend init returned false!\n";
-  }
-}
-
 uint32_t getPixelColor(Color const& color) {
     uint32_t ret = (color.b << 8) | (color.g << 16) | (color.r << 24);
     return ret;
@@ -216,16 +204,21 @@ uint32_t getPixelColor(Color const& color) {
 
 template <>
 void GLRenderer::drawPixel(Point const &point, Color const &color) {
-    if(point.x <=_backend->_dims.x && point.y <= _backend->_dims.y) {
+    if(point.x <=_backend->_dims.width && point.y <= _backend->_dims.height) {
         *_backend->_screen.at(point) = getPixelColor(color);
     }
+}
+
+template <>
+void GLRenderer::drawText(Point const& anchor, const char* text, Color const& color) {
+
 }
 
 template <> void GLRenderer::fill(Region const &region, Color const &color) {
     for (uint i = region.top_left.x; i < region.bottom_right.x; i++) {
       for (uint j = region.top_left.y; j < region.bottom_right.y; j++) {
-          // *_backend->_screen.at({i, _backend->_dims.y-j}) = 0xff000000;
-          *_backend->_screen.at({i, _backend->_dims.y-j}) = getPixelColor(color);
+        assert((_backend->_dims.height-1-j)*128+i-1 < 128*64);
+          *_backend->_screen.at({i, _backend->_dims.height-1-j}) = getPixelColor(color);
       }
     }
 }
@@ -238,7 +231,9 @@ template <> void GLRenderer::update() {
   _backend->update();
 }
 
-template <> void GLRenderer::clear() {}
+template <> void GLRenderer::clear() {
+  this->fill({{0,0}, {this->_backend->_dims.width-1,this->_backend->_dims.height-1}}, {0,0,0});
+}
 
 GLuint compileShader(std::string vertexSource, std::string fragmentSource) {
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
