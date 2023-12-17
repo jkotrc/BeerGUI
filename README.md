@@ -1,5 +1,7 @@
 # Beer GUI
 
+![BeerGUI Demo GIF](docs/beergui-demo.gif)
+
 ## Overview
 
 This project provides a small useful toolkit for building simple embedded display interfaces. The `src` folder can be included through the Arduino IDE for use in your sketch. It is expected to work with any display using `Adafruit_GFX`, which BeerGUI depends on.
